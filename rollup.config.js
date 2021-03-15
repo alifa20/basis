@@ -16,7 +16,7 @@ export default [
     ],
     plugins: [
       del({ targets: ['dist/*', 'playground/src/component-lib'] }),
-      typescript(),
+      typescript({ include: ["src/*.js", "src/**/*.js", "src/*.ts(x)", "src/**/*.ts(x)"] }),
     ],
     external: Object.keys(pkg.peerDependencies || {}),
   },

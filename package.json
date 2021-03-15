@@ -31,7 +31,8 @@
     "rollup-plugin-delete": "^1.1.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "tslib": "^2.1.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "yalc": "^1.0.0-pre.50"
   },
   "peerDependencies": {
     "react": "^16.10.2",

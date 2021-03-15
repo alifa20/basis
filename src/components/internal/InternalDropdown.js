@@ -5,11 +5,11 @@ import Text from "../Text";
 import useBackground, {
   BackgroundProvider,
   mapResponsiveValues,
-} from "../../src/hooks/useBackground";
-import useTheme from "../../src/hooks/useTheme";
-import { responsiveMaxHeightType } from "../../src/hooks/useResponsiveProp";
-import useResponsivePropsCSS from "../../src/hooks/useResponsivePropsCSS";
-import { responsiveSize } from "../../src/utils/css";
+} from "../../hooks/useBackground";
+import useTheme from "../../hooks/useTheme";
+import { responsiveMaxHeightType } from "../../hooks/useResponsiveProp";
+import useResponsivePropsCSS from "../../hooks/useResponsivePropsCSS";
+import { responsiveSize } from "../../utils/css";
 
 const COLORS = ["grey.t05", "white"];
 

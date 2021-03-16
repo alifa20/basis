@@ -83,7 +83,11 @@
     "ts-jest": "^26.5.3",
     "tslib": "^2.1.0",
     "typescript": "^4.2.3",
-    "yalc": "^1.0.0-pre.50"
+    "yalc": "^1.0.0-pre.50",
+    "prop-types": "15.7.2",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "mq-polyfill": "1.1.8"
   },
   "peerDependencies": {
     "react": "^16.10.2",

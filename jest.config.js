@@ -5,7 +5,12 @@ module.exports = {
   roots: ["<rootDir>"],
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss|png|jpg|svg)$": "identity-obj-proxy",
+    "^react($|/.+)": "<rootDir>/node_modules/react$1",
+    basis: "<rootDir>/src",
+    "typeface-montserrat": "identity-obj-proxy",
+    "typeface-roboto": "identity-obj-proxy",
   },
+  modulePaths: ["src"],
   testPathIgnorePatterns: [
     "node_modules",
     "dist",
@@ -21,4 +26,5 @@ module.exports = {
 
   testURL: "http://localhost",
   moduleDirectories: ["node_modules", "src"],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };

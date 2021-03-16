@@ -8,3 +8,4 @@ website/node_modules
 website/public
 website/package-lock.json
 package-lock.json
+*.config.js

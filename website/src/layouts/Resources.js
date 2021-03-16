@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import { Link as GatsbyLink } from "gatsby";
-import * as allDesignSystem from "../../lib/basis-lib";
+import * as allDesignSystem from "basis";
 
 const { BasisProvider, defaultTheme, Container } = allDesignSystem;
 

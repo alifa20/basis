@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { Resizable } from "re-resizable";
 import { LiveProvider, LiveError } from "react-live";
-import { useTheme } from "../../lib/basis-lib";
+import { useTheme } from "basis";
 import { reactLiveEditorTheme } from "../utils/constants";
 import ComponentCode from "./ComponentCode";
 import ComponentPreview from "./ComponentPreview";

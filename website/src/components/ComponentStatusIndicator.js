@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { COMPONENT_STATUS } from "../utils/constants";
-import { useTheme } from "../../lib/basis-lib";
+import { useTheme } from "basis";
 
 const statusDescriptions = {
   DRAFT:

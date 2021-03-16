@@ -1,10 +1,10 @@
-node_modules
 dist
-component-lib
-basis-lib
+node_modules
 public
+package-lock.json
 website/.cache
 website/node_modules
 website/public
 website/package-lock.json
-package-lock.json
+component-lib
+basis-lib

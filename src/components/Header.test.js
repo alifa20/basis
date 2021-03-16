@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import Header from "./Header";
-import { render, screen } from "../utils/test";
+import { render, screen, waitFor } from "../utils/test";
 
 describe("Header", () => {
   it("exposes an ID", () => {
@@ -15,14 +15,17 @@ describe("Header", () => {
     });
   });
 
-  it("with testId", () => {
+  it("with testId", async () => {
     const { container } = render(
       <Header testId="my-header">
         <Header.Logo name="gem" testId="my-header-logo" />
       </Header>
     );
+    const firstChild = await waitFor(() => container.firstChild);
 
-    expect(container.firstChild).toHaveAttribute("data-testid", "my-header");
-    expect(screen.getByTestId("my-header-logo")).toBeInTheDocument();
+    const comp = await waitFor(() => screen.findByTestId("my-header-logo"));
+
+    expect(firstChild).toHaveAttribute("data-testid", "my-header");
+    expect(comp).toBeInTheDocument();
   });
 });

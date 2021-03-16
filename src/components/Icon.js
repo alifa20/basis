@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import * as React from "react";
 import useTheme from "../hooks/useTheme";
 
 const NAMES = [
@@ -97,23 +97,44 @@ Icon.DEFAULT_PROPS = DEFAULT_PROPS;
 function Icon(_props) {
   const props = { ...DEFAULT_PROPS, ..._props };
   const { name, size, color, hoverColor, secondaryColor, testId } = props;
+  const ImportedIconRef = React.useRef(null);
   const theme = useTheme();
+  const [loading, setLoading] = React.useState(false);
 
-  if (!NAMES.includes(name)) {
-    return null;
+  React.useEffect(() => {
+    if (!NAMES.includes(name)) {
+      // console.log('herereherhereh');
+      return null;
+    }
+    setLoading(true);
+    const importIcon = async () => {
+      try {
+        ImportedIconRef.current = (
+          await import(`./${name}.svg`)
+        ).ReactComponent;
+      } catch (err) {
+        // console.log("errrrrrrr", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    importIcon();
+  }, [name]);
+
+  if (!loading && ImportedIconRef.current) {
+    const { current: IconComponent } = ImportedIconRef;
+    return (
+      <IconComponent
+        size={size}
+        primaryColor={theme.getColor(color)}
+        secondaryColor={theme.getColor(secondaryColor)}
+        hoverColor={theme.getColor(hoverColor)}
+        testId={testId}
+      />
+    );
   }
 
-  const IconComponent = require(`../icons/${name}`).default;
-
-  return (
-    <IconComponent
-      size={size}
-      primaryColor={theme.getColor(color)}
-      secondaryColor={theme.getColor(secondaryColor)}
-      hoverColor={theme.getColor(hoverColor)}
-      testId={testId}
-    />
-  );
+  return null;
 }
 
 Icon.propTypes = {

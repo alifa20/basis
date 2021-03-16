@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import {
   responsiveHeightType,
@@ -21,19 +21,40 @@ function Logo(_props) {
   const heightProps = useAllResponsiveProps(props, "height");
   const maxWidthProps = useAllResponsiveProps(props, "maxWidth");
 
-  if (!NAMES.includes(name)) {
-    return null;
+  const ImportedIconRef = React.useRef(null);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!NAMES.includes(name)) {
+      return null;
+    }
+    setLoading(true);
+    const importIcon = async () => {
+      try {
+        ImportedIconRef.current = (
+          await import(`./${name}.svg`)
+        ).ReactComponent;
+      } catch (err) {
+        // console.log("logogogoggogogogog errrrrrrrr");
+      } finally {
+        setLoading(false);
+      }
+    };
+    importIcon();
+  }, [name]);
+
+  if (!loading && ImportedIconRef.current) {
+    const { current: LogoComponent } = ImportedIconRef;
+    const logoProps = {
+      color,
+      ...heightProps,
+      ...maxWidthProps,
+      testId,
+    };
+    return <LogoComponent {...logoProps} />;
   }
 
-  const LogoComponent = require(`../logos/${name}`).default;
-  const logoProps = {
-    color,
-    ...heightProps,
-    ...maxWidthProps,
-    testId,
-  };
-
-  return <LogoComponent {...logoProps} />;
+  return null;
 }
 
 Logo.propTypes = {

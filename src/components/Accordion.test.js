@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, userEvent } from "../utils/test";
+import { render, screen, userEvent, waitFor } from "../utils/test";
 import Accordion from "./Accordion";
 import Container from "./Container";
 import Text from "./Text";
@@ -241,7 +241,7 @@ describe("Accordion", () => {
     });
   });
 
-  it("with onItemToggle", () => {
+  it("with onItemToggle", async () => {
     const onItemToggle = jest.fn();
 
     render(
@@ -263,9 +263,10 @@ describe("Accordion", () => {
       </Accordion>
     );
 
-    const item1 = screen.getByTestId("accordion-item-1");
-    const item2 = screen.getByTestId("accordion-item-2");
-    const item3 = screen.getByTestId("accordion-item-3");
+    const item1 = await screen.findByTestId("accordion-item-1");
+    const item2 = await screen.findByTestId("accordion-item-2");
+    const item3 = await screen.findByTestId("accordion-item-3");
+
     const item1HeaderButton = item1.querySelector("[aria-controls]");
     const item2HeaderButton = item2.querySelector("[aria-controls]");
     const item3HeaderButton = item3.querySelector("[aria-controls]");
@@ -310,7 +311,7 @@ describe("Accordion", () => {
     });
   });
 
-  it("with custom content padding", () => {
+  it("with custom content padding", async () => {
     render(
       <Accordion>
         <Accordion.Item testId="accordion-item-1">
@@ -322,7 +323,7 @@ describe("Accordion", () => {
       </Accordion>
     );
 
-    const item1 = screen.getByTestId("accordion-item-1");
+    const item1 = await waitFor(() => screen.findByTestId("accordion-item-1"));
     const item1Content = item1.querySelector(`[role="region"]`);
 
     expect(item1Content).toHaveStyle({
@@ -330,7 +331,7 @@ describe("Accordion", () => {
     });
   });
 
-  it("inside dark container", () => {
+  it("inside dark container", async () => {
     render(
       <Container bg="grey.t07">
         <Accordion>
@@ -344,15 +345,16 @@ describe("Accordion", () => {
       </Container>
     );
 
-    const headerButton = screen.getByRole("button", { name: /Header 1/ });
-
+    const headerButton = await screen.findByRole("button", {
+      name: /Header 1/,
+    });
     expect(headerButton).toHaveStyle({
       backgroundColor: "#ffffff",
       color: "#000000",
     });
   });
 
-  it("inside nested container", () => {
+  it("inside nested container", async () => {
     render(
       <Container bg="grey.t07">
         <Container>
@@ -368,7 +370,9 @@ describe("Accordion", () => {
       </Container>
     );
 
-    const headerButton = screen.getByRole("button", { name: /Header 1/ });
+    const headerButton = await screen.findByRole("button", {
+      name: /Header 1/,
+    });
 
     expect(headerButton).toHaveStyle({
       backgroundColor: "#ffffff",
@@ -376,7 +380,7 @@ describe("Accordion", () => {
     });
   });
 
-  it("with testId", () => {
+  it("with testId", async () => {
     const { container } = render(
       <Accordion testId="my-accordion">
         <Accordion.Item>
@@ -424,7 +428,9 @@ describe("Accordion", () => {
       </Accordion>
     );
 
-    expect(container.firstChild).toHaveAttribute("data-testid", "my-accordion");
+    const firstChild = await waitFor(() => container.firstChild);
+
+    expect(firstChild).toHaveAttribute("data-testid", "my-accordion");
     expect(screen.getByTestId("my-accordion-item")).toBeInTheDocument();
     expect(screen.getByTestId("my-accordion-item-header")).toBeInTheDocument();
     expect(screen.getByTestId("my-accordion-item-content")).toBeInTheDocument();

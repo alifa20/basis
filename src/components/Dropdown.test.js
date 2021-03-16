@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, userEvent } from "../utils/test";
+import { render, screen, userEvent, waitFor } from "../utils/test";
 import "@testing-library/jest-dom/extend-expect";
 import Form from "./Form";
 import Text from "./Text";
@@ -161,12 +161,11 @@ describe("Dropdown", () => {
     });
   });
 
-  it("with testId", () => {
+  it("with testId", async () => {
     const { container } = render(<FormWithDropdown testId="my-dropdown" />);
-
-    expect(container.querySelector("form").firstChild).toHaveAttribute(
-      "data-testid",
-      "my-dropdown"
+    const comp = await waitFor(
+      () => container.querySelector("form").firstChild
     );
+    expect(comp).toHaveAttribute("data-testid", "my-dropdown");
   });
 });

@@ -1,10 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { Container, Sticky, Header, Stepper, Text } from ".";
-import { render, screen } from "../utils/test";
+import { render, screen, waitFor } from "../utils/test";
 
 describe("Sticky", () => {
-  it("applies the right CSS to sticky items", () => {
+  it("applies the right CSS to sticky items", async () => {
     function MyStickyNav() {
       return (
         <Container hasBreakpointWidth>
@@ -44,9 +44,9 @@ describe("Sticky", () => {
       </Sticky>
     );
 
-    const header = screen.getByTestId("my-header");
-    const stepper = screen.getByTestId("my-stepper");
-    const stickyNav = screen.getByTestId("my-sticky-nav");
+    const header = await waitFor(() => screen.findByTestId("my-header"));
+    const stepper = await waitFor(() => screen.findByTestId("my-stepper"));
+    const stickyNav = await waitFor(() => screen.findByTestId("my-sticky-nav"));
 
     expect(header).toHaveStyle({
       position: "sticky",
@@ -65,7 +65,7 @@ describe("Sticky", () => {
     });
   });
 
-  it("with testId", () => {
+  it("with testId", async () => {
     const { container } = render(
       <Sticky testId="my-sticky">
         <Sticky.Item testId="my-sticky-item">
@@ -75,8 +75,9 @@ describe("Sticky", () => {
         </Sticky.Item>
       </Sticky>
     );
+    const firstChild = await waitFor(() => container.firstChild);
 
-    expect(container.firstChild).toHaveAttribute("data-testid", "my-sticky");
+    expect(firstChild).toHaveAttribute("data-testid", "my-sticky");
     expect(screen.getByTestId("my-sticky-item")).toBeInTheDocument();
   });
 });

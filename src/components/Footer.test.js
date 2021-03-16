@@ -2,10 +2,10 @@ import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import Footer from "./Footer";
 import Link from "./Link";
-import { render, screen } from "../utils/test";
+import { render, screen, waitFor } from "../utils/test";
 
 describe("Footer", () => {
-  it("with testId", () => {
+  it("with testId", async () => {
     const { container } = render(
       <Footer testId="my-footer">
         <Footer.Header testId="my-footer-header">
@@ -87,7 +87,9 @@ describe("Footer", () => {
       </Footer>
     );
 
-    expect(container.firstChild).toHaveAttribute("data-testid", "my-footer");
+    const firstChild = await waitFor(() => container.firstChild);
+
+    expect(firstChild).toHaveAttribute("data-testid", "my-footer");
 
     expect(screen.getByTestId("my-footer-header")).toBeInTheDocument();
     expect(screen.getByTestId("my-footer-header-logo")).toBeInTheDocument();

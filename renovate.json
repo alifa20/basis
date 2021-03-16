@@ -1,20 +1,19 @@
 {
-    "extends": ["config:base"],
-    "schedule": "every weekend",
-    "packageRules": [
-      {
-        "depTypeList": ["dependencies", "devDependencies"],
-        "updateTypes": ["minor", "patch"],
-        "rangeStrategy": "pin",
-        "groupName": "minor and patch"
-      },
-      {
-        "depTypeList": ["dependencies", "devDependencies"],
-        "updateTypes": ["major"],
-        "rangeStrategy": "pin",
-        "dependencyDashboardApproval": true,
-        "dependencyDashboardAutoclose": true
-      }
-    ]
-  }
-  
+  "extends": ["config:base"],
+  "schedule": "every weekend",
+  "packageRules": [
+    {
+      "depTypeList": ["dependencies", "devDependencies"],
+      "updateTypes": ["minor", "patch"],
+      "rangeStrategy": "pin",
+      "groupName": "minor and patch"
+    },
+    {
+      "depTypeList": ["dependencies", "devDependencies"],
+      "updateTypes": ["major"],
+      "rangeStrategy": "pin",
+      "dependencyDashboardApproval": true,
+      "dependencyDashboardAutoclose": true
+    }
+  ]
+}

@@ -1,7 +1,3 @@
-import { MyComponent } from './my-component';
-
-export { MyComponent };
-
 // Providers
 export { default as BasisProvider } from "./providers/BasisProvider";
 

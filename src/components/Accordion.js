@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import useTheme from "../hooks/useTheme";
@@ -63,7 +63,7 @@ function Header({ children, testId, __internal__keyboardFocus = false }) {
     isOpen,
     toggleAccordionItem,
   } = useAccordionItem();
-  const onClick = React.useCallback(() => {
+  const onClick = useCallback(() => {
     toggleAccordionItem();
     onItemToggle &&
       onItemToggle({ isOpen: !isOpen, itemHeaderChildren: children });
@@ -184,10 +184,8 @@ Item.DEFAULT_PROPS = DEFAULT_ITEM_PROPS;
 function Item(props) {
   const theme = useTheme();
   const { itemGap } = useAccordion();
-  const [headerId] = React.useState(() => `accordion-item-header-${nanoid()}`);
-  const [contentId] = React.useState(
-    () => `accordion-item-content-${nanoid()}`
-  );
+  const [headerId] = useState(() => `accordion-item-header-${nanoid()}`);
+  const [contentId] = useState(() => `accordion-item-content-${nanoid()}`);
   const mergedProps = mergeProps(
     props,
     DEFAULT_ITEM_PROPS,
@@ -197,11 +195,11 @@ function Item(props) {
     }
   );
   const { initiallyOpen, children, testId } = mergedProps;
-  const [isOpen, setIsOpen] = React.useState(initiallyOpen);
-  const toggleAccordionItem = React.useCallback(() => {
+  const [isOpen, setIsOpen] = useState(initiallyOpen);
+  const toggleAccordionItem = useCallback(() => {
     setIsOpen((isOpen) => !isOpen);
   }, []);
-  const accordionItemInfo = React.useMemo(
+  const accordionItemInfo = useMemo(
     () => ({
       headerId,
       contentId,
@@ -264,7 +262,7 @@ function Accordion(props) {
           },
           theme
         );
-  const accordionInfo = React.useMemo(
+  const accordionInfo = useMemo(
     () => ({
       colorMap,
       textColor,

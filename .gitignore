@@ -61,6 +61,7 @@ typings/
 .cache/
 public
 website/public
+website/basis-lib
 
 # Mac files
 .DS_Store

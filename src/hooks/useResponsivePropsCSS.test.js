@@ -17,7 +17,7 @@ import {
   responsiveFlexDirection,
   responsiveFlexPlaceItems,
 } from "../utils/css";
-import { TestWrapper } from "../utils/test";
+import { TestWrapper } from "../utils/test-utils";
 import { defaultTheme as theme } from "..";
 
 describe("getBreakpointToPropsMap", () => {

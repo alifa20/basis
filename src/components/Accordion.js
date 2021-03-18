@@ -185,7 +185,9 @@ function Item(props) {
   const theme = useTheme();
   const { itemGap } = useAccordion();
   const [headerId] = React.useState(() => `accordion-item-header-${nanoid()}`);
-  const [contentId] = React.useState(() => `accordion-item-content-${nanoid()}`);
+  const [contentId] = React.useState(
+    () => `accordion-item-content-${nanoid()}`
+  );
   const mergedProps = mergeProps(
     props,
     DEFAULT_ITEM_PROPS,

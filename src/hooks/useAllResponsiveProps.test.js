@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import useAllResponsiveProps from "./useAllResponsiveProps";
-import { TestWrapper } from "../utils/test";
+import { TestWrapper } from "../utils/test-utils";
 
 describe("useAllResponsiveProps", () => {
   it("collects all the responsive props", () => {

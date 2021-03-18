@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import Divider from "./Divider";
-import { render, screen } from "../utils/test";
+import { render, screen } from "../utils/test-utils";
 
 describe("Divider", () => {
   it("with margin", () => {

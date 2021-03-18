@@ -1,5 +1,5 @@
 import React from "react";
-import { theme } from "./test";
+import { theme } from "./test-utils";
 import { getStickyItemInfo } from "./sticky";
 import { Text } from "..";
 

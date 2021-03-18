@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, userEvent } from "../utils/test";
+import { render, screen, userEvent } from "../utils/test-utils";
 import Accordion from "./Accordion";
 import Container from "./Container";
 import Text from "./Text";

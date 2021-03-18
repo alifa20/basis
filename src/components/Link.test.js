@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, userEvent } from "../utils/test";
+import { render, screen, userEvent } from "../utils/test-utils";
 import Link from "./Link";
 import Container from "./Container";
 

@@ -2,7 +2,7 @@ import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import Footer from "./Footer";
 import Link from "./Link";
-import { render, screen } from "../utils/test";
+import { render, screen } from "../utils/test-utils";
 
 describe("Footer", () => {
   it("with testId", () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import useTheme from "../hooks/useTheme";
+import { iconListMapping } from "./icon-list";
 
 const NAMES = [
   "assistance",
@@ -103,17 +104,17 @@ function Icon(_props) {
     return null;
   }
 
-  // const IconComponent = require(`../icons/${name}`).default;
-  return null;
-  // return (
-  //   <IconComponent
-  //     size={size}
-  //     primaryColor={theme.getColor(color)}
-  //     secondaryColor={theme.getColor(secondaryColor)}
-  //     hoverColor={theme.getColor(hoverColor)}
-  //     testId={testId}
-  //   />
-  // );
+  const IconComponent = iconListMapping[name];
+
+  return (
+    <IconComponent
+      size={size}
+      primaryColor={theme.getColor(color)}
+      secondaryColor={theme.getColor(secondaryColor)}
+      hoverColor={theme.getColor(hoverColor)}
+      testId={testId}
+    />
+  );
 }
 
 Icon.propTypes = {

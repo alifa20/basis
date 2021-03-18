@@ -1,6 +1,6 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
-import { render } from "../../../../src/utils/test";
+import { render } from "../../../../src/utils/test-utils";
 import "@testing-library/jest-dom/extend-expect";
 import Playground from "./index";
 

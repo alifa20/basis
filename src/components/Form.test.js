@@ -1,19 +1,21 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import "@testing-library/jest-dom/extend-expect";
 import {
-  Form,
-  Grid,
-  Text,
-  Input,
+  Button,
   Checkbox,
-  TimeSpan,
   DatePicker,
+  Form,
   Frequency,
+  Grid,
+  Input,
   RadioGroup,
   Select,
-  Button,
+  Text,
+  Textarea,
+  TimeSpan,
 } from ".";
-import { render, screen, userEvent, waitFor } from "../utils/test";
+import { render, screen, userEvent, waitFor } from "../utils/test-utils";
 
 const relationshipStatusOptions = [
   {
@@ -44,7 +46,6 @@ const hungryOptions = [
   },
 ];
 
-// eslint-disable-next-line react/prop-types
 function SimpleForm({ testId }) {
   const initialValues = {
     name: "",
@@ -57,8 +58,13 @@ function SimpleForm({ testId }) {
   );
 }
 
-// eslint-disable-next-line react/prop-types
-function ComplexForm({ onSubmit, initialValues }) {
+function ComplexForm({
+  initialValues,
+  initialErrors,
+  onSubmit,
+  unMountFormOnSubmit = false,
+}) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const formInitialValues = {
     name: "",
     relationshipStatus: "",
@@ -77,11 +83,26 @@ function ComplexForm({ onSubmit, initialValues }) {
       years: "",
       months: "",
     },
+    aboutYourself: "",
     ...initialValues,
   };
 
+  if (isSubmitted) {
+    return <div>Congrats!</div>;
+  }
+
   return (
-    <Form initialValues={formInitialValues} onSubmit={onSubmit}>
+    <Form
+      initialValues={formInitialValues}
+      initialErrors={initialErrors}
+      onSubmit={(args) => {
+        onSubmit(args);
+
+        if (unMountFormOnSubmit) {
+          setIsSubmitted(true);
+        }
+      }}
+    >
       {() => (
         <Grid rowsGap="8">
           <Text as="h2" textStyle="heading4">
@@ -109,12 +130,18 @@ function ComplexForm({ onSubmit, initialValues }) {
           <Frequency name="salary" label="Salary" />
           <DatePicker name="birthDate" label="Birth date" />
           <TimeSpan name="age" label="Age" />
+          <Textarea
+            name="aboutYourself"
+            label="Tell us about yourself"
+            height="100"
+          />
           <Button type="submit">Submit</Button>
         </Grid>
       )}
     </Form>
   );
 }
+// eslint-disable react/prop-types
 
 describe("Form", () => {
   it("renders a form", () => {
@@ -140,6 +167,7 @@ describe("Form", () => {
           relationshipStatus: ["Please make a selection."],
           salary: ["Please enter an amount.", "Please select a frequency."],
           birthDate: ["Required"],
+          aboutYourself: ["Required"],
         },
         values: {
           age: {
@@ -159,10 +187,49 @@ describe("Form", () => {
             month: "",
             year: "",
           },
+          aboutYourself: "",
         },
         setErrors: expect.any(Function),
       })
     );
+  });
+
+  it("doesn't throw errors if the form is unmounted after submission", async () => {
+    const onSubmit = jest.fn();
+
+    render(
+      <ComplexForm
+        initialValues={{
+          name: "David",
+          relationshipStatus: "married",
+          likeIceCream: true,
+          hungry: "no",
+          salary: {
+            amount: "75000",
+            frequency: "annually",
+          },
+          birthDate: {
+            day: "18",
+            month: "04",
+            year: "1982",
+          },
+          age: {
+            years: "16",
+            months: "5",
+          },
+          aboutYourself: "I like chess",
+        }}
+        onSubmit={onSubmit}
+        unMountFormOnSubmit
+      />
+    );
+
+    screen.getByLabelText("Name").focus();
+    userEvent.click(screen.getByRole("button", "Submit"));
+
+    await waitFor(() => {
+      expect(onSubmit).toBeCalled();
+    });
   });
 
   it("setErrors", async () => {
@@ -195,6 +262,7 @@ describe("Form", () => {
             years: "16",
             months: "5",
           },
+          aboutYourself: "I like chess",
         }}
         onSubmit={onSubmit}
       />
@@ -222,6 +290,21 @@ describe("Form", () => {
         screen.queryByText("Try to spell it differently.")
       ).not.toBeInTheDocument();
     });
+  });
+
+  it("with initialErrors", () => {
+    const initialErrors = {
+      name: ["This name is already taken."],
+      aboutYourself: ["You can't use inappropriate words.", "Max 500 words."],
+    };
+
+    render(<ComplexForm initialErrors={initialErrors} />);
+
+    expect(screen.getByText("This name is already taken.")).toBeInTheDocument();
+    expect(
+      screen.getByText("You can't use inappropriate words.")
+    ).toBeInTheDocument();
+    expect(screen.getByText("Max 500 words.")).toBeInTheDocument();
   });
 
   it("with testId", () => {

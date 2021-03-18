@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, userEvent } from "../utils/test";
+import { render, screen, userEvent } from "../utils/test-utils";
 import "@testing-library/jest-dom/extend-expect";
 import Form from "./Form";
 import Text from "./Text";

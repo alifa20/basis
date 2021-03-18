@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { Container, Sticky, Header, Stepper, Text } from ".";
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../utils/test";
 
 describe("Sticky", () => {
   it("applies the right CSS to sticky items", () => {

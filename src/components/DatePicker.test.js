@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen, waitFor, userEvent } from "../utils/test-utils";
+import { render, screen, waitFor, userEvent } from "../utils/test";
 import Form from "./Form";
 import DatePicker from "./DatePicker";
 import Container from "./Container";

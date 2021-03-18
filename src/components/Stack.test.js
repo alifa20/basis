@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { Stack, Text } from ".";
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../utils/test";
 
 describe("Stack", () => {
   it("renders all children", () => {

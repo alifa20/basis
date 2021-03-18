@@ -15,7 +15,7 @@ import {
   Textarea,
   TimeSpan,
 } from ".";
-import { render, screen, userEvent, waitFor } from "../utils/test-utils";
+import { render, screen, userEvent, waitFor } from "../utils/test";
 
 const relationshipStatusOptions = [
   {

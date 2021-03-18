@@ -3,7 +3,7 @@ import "@testing-library/jest-dom/extend-expect";
 import Button from "./Button";
 import Link from "./Link";
 import Message from "./Message";
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../utils/test";
 
 describe("Message", () => {
   it("has padding", () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import Grid from "./Grid";
-import { render, screen } from "../utils/test-utils";
+import { render, screen } from "../utils/test";
 
 describe("Grid", () => {
   it("with margin", () => {

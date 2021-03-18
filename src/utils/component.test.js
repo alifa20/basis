@@ -3,7 +3,7 @@ import {
   getResponsivePropMap,
   mergeResponsivePropMaps,
 } from "./component";
-import { theme } from "./test-utils";
+import { theme } from "./test";
 
 describe("areOptionsValid", () => {
   it("options are invalid", () => {

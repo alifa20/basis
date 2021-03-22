@@ -62,7 +62,7 @@ const allowedColors = [
   },
 ];
 
-function getInheritedColor(backgroundColor) {
+function getInheritedColor(backgroundColor: any) {
   return backgroundColor === "primary.blue.t100" ? "white" : "black";
 }
 
@@ -81,23 +81,23 @@ Text.ALIGNS = ALIGNS;
 Text.allowedColors = allowedColors;
 Text.DEFAULT_PROPS = DEFAULT_PROPS;
 
-function Text(props) {
+function Text(props: any) {
   const { textStyle: inheritedTextStyle } = useTextStyle();
   const { bgMap } = useBackground();
   const inheritedProps = {
     textStyle: inheritedTextStyle,
   };
   const mergedProps = mergeProps(props, DEFAULT_PROPS, inheritedProps, {
-    id: (id) => typeof id === "string",
-    as: (as) => AS.includes(as),
-    textStyle: (textStyle) => TEXT_STYLES.includes(textStyle),
-    color: (color) => COLORS.includes(color),
-    align: (align) => ALIGNS.includes(align),
-    wrap: (wrap) => typeof wrap === "boolean",
+    id: (id: any) => typeof id === "string",
+    as: (as: any) => AS.includes(as),
+    textStyle: (textStyle: any) => TEXT_STYLES.includes(textStyle),
+    color: (color: any) => COLORS.includes(color),
+    align: (align: any) => ALIGNS.includes(align),
+    wrap: (wrap: any) => typeof wrap === "boolean",
   });
   const { id, as, align, wrap, role, children, testId } = mergedProps;
   const css = useResponsivePropsCSS(mergedProps, DEFAULT_PROPS, {
-    color: (_, theme, bp) => {
+    color: (_: any, theme: any, bp: any) => {
       const color =
         hasOwnProperty(props, "color") && hasOwnProperty(mergedProps, "color")
           ? mergedProps.color
@@ -126,7 +126,7 @@ Text.propTypes = {
   as: PropTypes.oneOf(AS),
   ...responsiveMarginType,
   ...responsivePropType("textStyle", PropTypes.oneOf(TEXT_STYLES)),
-  color: (props) => {
+  color: (props: any) => {
     allowedColors.forEach(({ textStyles, allowedColors }) => {
       if (
         textStyles.includes(props.textStyle) &&

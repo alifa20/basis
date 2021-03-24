@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import Container from "../components/Container";
 import Grid from "../components/Grid";
 import Flex from "../components/Flex";
-import Text from "../components/Text";
+import Text from "../components/Text.tsx";
 import useResponsivePropsCSS, {
   getBreakpointToPropsMap,
 } from "./useResponsivePropsCSS";

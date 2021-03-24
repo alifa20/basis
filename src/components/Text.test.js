@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "../utils/test";
 import "@testing-library/jest-dom/extend-expect";
 import Text from "./Text";

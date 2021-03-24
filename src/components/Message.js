@@ -1,7 +1,8 @@
+/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import Icon from "./Icon";
-import Text from "./Text";
+import Text from "./Text.tsx";
 import useTheme from "../hooks/useTheme";
 import { BackgroundProvider } from "../hooks/useBackground";
 import {

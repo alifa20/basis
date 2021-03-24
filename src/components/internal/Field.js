@@ -1,7 +1,8 @@
+/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import Grid from "../Grid";
-import Text from "../Text";
+import Text from "../Text.tsx";
 import VisuallyHidden from "../VisuallyHidden";
 import useTheme from "../../hooks/useTheme";
 

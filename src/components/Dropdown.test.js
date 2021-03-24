@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, userEvent } from "../utils/test";
 import "@testing-library/jest-dom/extend-expect";
 import Form from "./Form";
-import Text from "./Text";
+import Text from "./Text.tsx";
 import Dropdown from "./Dropdown";
 import Container from "./Container";
 

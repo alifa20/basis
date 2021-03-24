@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import useTheme from "../hooks/useTheme";
@@ -6,7 +7,7 @@ import useResponsiveProp, {
 } from "../hooks/useResponsiveProp";
 import Container from "./Container";
 import Icon from "./Icon";
-import Text from "./Text";
+import Text from "./Text.tsx";
 
 const DEFAULT_ITEM_PROPS = {
   minor: false,

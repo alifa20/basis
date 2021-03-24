@@ -1,12 +1,13 @@
-import React, { Children } from "react";
-import PropTypes from "prop-types";
+/** @jsxImportSource @emotion/core */
+import * as React from "react";
+import * as PropTypes from "prop-types";
 import Accordion from "./Accordion";
 import Container from "./Container";
 import Flex from "./Flex";
 import Icon from "./Icon";
 import Link from "./Link";
 import Stack from "./Stack";
-import Text from "./Text";
+import Text from "./Text.tsx";
 import useBreakpoint from "../hooks/useBreakpoint";
 import useTheme from "../hooks/useTheme";
 import Logo from "./Logo";
@@ -238,7 +239,7 @@ function Links(props) {
             </div>
           ) : (
             <Accordion itemGap="small">
-              {Children.map(children, (child, index) => (
+              {React.Children.map(children, (child, index) => (
                 <Accordion.Item key={index}>
                   <Accordion.Item.Header>
                     {child.props.title}

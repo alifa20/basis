@@ -42,7 +42,8 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  console.error.mockRestore();
+  // console.error.mockRestore();
+  jest.resetAllMocks()
 });
 
 // custom matchers

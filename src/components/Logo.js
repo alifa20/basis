@@ -5,7 +5,6 @@ import {
   responsiveMaxWidthType,
 } from "../hooks/useResponsiveProp";
 import useAllResponsiveProps from "../hooks/useAllResponsiveProps";
-import { logoListMapping } from "./logo-list";
 
 const NAMES = ["latitude", "gem"];
 const COLORS = ["primary.blue.t100", "black", "white"];
@@ -26,7 +25,7 @@ function Logo(_props) {
     return null;
   }
 
-  const LogoComponent = logoListMapping[name];
+  const LogoComponent = require(`../logos/${name}`).default;
   const logoProps = {
     color,
     ...heightProps,

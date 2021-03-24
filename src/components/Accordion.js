@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";

@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import LoadingIcon from "./LoadingIcon";

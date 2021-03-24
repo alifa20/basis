@@ -1,0 +1,16 @@
+{
+  "name": "emotion-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "jscodeshift -t transform.ts ../../src/icons/arrow-forward.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jscodeshift": "^0.11.0"
+  }
+}

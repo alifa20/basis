@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "../utils/test";
 import "@testing-library/jest-dom/extend-expect";
 import Container from "./Container";
-import Text from "./Text";
+import Text from "./Text.tsx";
 
 describe("Container", () => {
   it("no props", () => {

@@ -1,5 +1,5 @@
 const path = require("path");
-const { COMPONENT_STATUS } = require("./src/utils/constants");
+const { COMPONENT_STATUS } = require("./dist/utils/constants");
 
 module.exports = {
   siteMetadata: {
@@ -98,14 +98,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: `${__dirname}/src/layouts/Page.js`,
+        component: `${__dirname}/dist/layouts/Page.js`,
       },
     },
     `gatsby-plugin-emotion`,
     {
       resolve: "gatsby-plugin-root-import",
       options: {
-        basis: path.join(__dirname, "../src"),
+        basis: path.join(__dirname, "../dist"),
       },
     },
     `gatsby-plugin-react-helmet-async`,
@@ -118,14 +118,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/dist/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `usage`,
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/dist/pages`,
         ignore: [`**/!(usage).mdx`],
       },
     },
@@ -133,29 +133,29 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `resources`,
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/dist/pages`,
         ignore: [`**/!(resources).mdx`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/dist/pages`,
       },
     },
     {
       // This is required by gatsby-plugin-mdx.
       resolve: "gatsby-plugin-page-creator",
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/dist/pages`,
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          usage: `${__dirname}/src/layouts/Usage.js`,
-          resources: `${__dirname}/src/layouts/Resources.js`,
+          usage: `${__dirname}/dist/layouts/Usage.js`,
+          resources: `${__dirname}/dist/layouts/Resources.js`,
         },
       },
     },
@@ -184,7 +184,7 @@ module.exports = {
         background_color: `#0046AA`,
         theme_color: `#0046AA`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `dist/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

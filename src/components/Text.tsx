@@ -1,5 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
+/** @jsxImportSource @emotion/core */
+import * as React from "react";
+import * as PropTypes from "prop-types";
 import {
   responsivePropType,
   responsiveMarginType,
@@ -74,14 +75,7 @@ const DEFAULT_PROPS = {
   wrap: true,
 };
 
-Text.AS = AS;
-Text.TEXT_STYLES = TEXT_STYLES;
-Text.COLORS = COLORS;
-Text.ALIGNS = ALIGNS;
-Text.allowedColors = allowedColors;
-Text.DEFAULT_PROPS = DEFAULT_PROPS;
-
-function Text(props) {
+export const Text = (props) => {
   const { textStyle: inheritedTextStyle } = useTextStyle();
   const { bgMap } = useBackground();
   const inheritedProps = {
@@ -119,7 +113,7 @@ function Text(props) {
       {children}
     </Component>
   );
-}
+};
 
 Text.propTypes = {
   id: PropTypes.string,
@@ -146,5 +140,12 @@ Text.propTypes = {
   children: PropTypes.node,
   testId: PropTypes.string,
 };
+
+Text.AS = AS;
+Text.TEXT_STYLES = TEXT_STYLES;
+Text.COLORS = COLORS;
+Text.ALIGNS = ALIGNS;
+Text.allowedColors = allowedColors;
+Text.DEFAULT_PROPS = DEFAULT_PROPS;
 
 export default Text;

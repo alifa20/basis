@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React, {
   useState,
   useEffect,
@@ -25,17 +26,10 @@ Form.DEFAULT_PROPS = DEFAULT_PROPS;
 
 function Form(_props) {
   const props = { ...DEFAULT_PROPS, ..._props };
-  const {
-    initialValues,
-    initialErrors,
-    onSubmit,
-    debug,
-    children,
-    testId,
-  } = props;
+  const { initialValues, onSubmit, debug, children, testId } = props;
   const [state, setState] = useState({
     values: initialValues,
-    errors: initialErrors ?? {},
+    errors: {},
     shouldValidateOnChange: false,
     namesToValidate: null,
     submitStatus: "READY",
@@ -79,7 +73,6 @@ function Form(_props) {
     */
     setTimeout(() => {
       if (
-        isMountedRef.current &&
         parentName !== lastFocusedFieldName.current &&
         (lastMouseDownInputElement.current === null ||
           parentName !== getParentFieldName(lastMouseDownInputElement.current))
@@ -244,13 +237,6 @@ function Form(_props) {
   const responsiveFormCSS = useResponsivePropsCSS(props, DEFAULT_PROPS, {
     width: responsiveSize("width"),
   });
-  const isMountedRef = useRef(true);
-
-  useEffect(() => {
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
 
   useEffect(() => {
     if (state.namesToValidate === null) {
@@ -308,7 +294,6 @@ function Form(_props) {
 Form.propTypes = {
   ...responsiveWidthType,
   initialValues: PropTypes.object.isRequired,
-  initialErrors: PropTypes.object,
   onSubmit: PropTypes.func,
   debug: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,

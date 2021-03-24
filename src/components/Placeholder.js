@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import useTheme from "../hooks/useTheme";
@@ -9,7 +10,7 @@ import useResponsivePropsCSS from "../hooks/useResponsivePropsCSS";
 import { responsiveSize } from "../utils/css";
 import { mergeProps } from "../utils/component";
 import Flex from "./Flex";
-import Text from "./Text";
+import Text from "./Text.tsx";
 
 const DEFAULT_PROPS = {
   height: "72px",

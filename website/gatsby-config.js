@@ -1,5 +1,5 @@
 const path = require("path");
-const { COMPONENT_STATUS } = require("./dist/utils/constants");
+const { COMPONENT_STATUS } = require("./dist");
 
 module.exports = {
   siteMetadata: {
@@ -98,7 +98,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: `${__dirname}/dist/layouts/Page.js`,
+        component: path.join(__dirname, "../dist"),
       },
     },
     `gatsby-plugin-emotion`,
@@ -118,14 +118,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/dist/images`,
+        path: path.join(__dirname, "../dist"),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `usage`,
-        path: `${__dirname}/dist/pages`,
+        path: path.join(__dirname, "../dist"),
         ignore: [`**/!(usage).mdx`],
       },
     },
@@ -133,29 +133,29 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `resources`,
-        path: `${__dirname}/dist/pages`,
+        path: path.join(__dirname, "../dist"),
         ignore: [`**/!(resources).mdx`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/dist/pages`,
+        path: path.join(__dirname, "../dist"),
       },
     },
     {
       // This is required by gatsby-plugin-mdx.
       resolve: "gatsby-plugin-page-creator",
       options: {
-        path: `${__dirname}/dist/pages`,
+        path: path.join(__dirname, "../dist"),
       },
     },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          usage: `${__dirname}/dist/layouts/Usage.js`,
-          resources: `${__dirname}/dist/layouts/Resources.js`,
+          usage: path.join(__dirname, "../dist"),
+          resources: path.join(__dirname, "../dist"),
         },
       },
     },

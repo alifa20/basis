@@ -13,3 +13,6 @@ export { getUniqueId } from "./utils/core";
 
 // Components
 export * from "./components";
+
+
+export { Temp } from './Temp';

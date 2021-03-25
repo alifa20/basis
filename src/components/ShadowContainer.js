@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import useTheme from "../hooks/useTheme";

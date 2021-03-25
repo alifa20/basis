@@ -105,7 +105,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-root-import",
       options: {
-        basis: path.join(__dirname, "../src"),
+        basis: path.join(__dirname, "./lib/basis-lib"),
       },
     },
     `gatsby-plugin-react-helmet-async`,

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Resizable } from "re-resizable";
 import useMousePosition from "@react-hook/mouse-position";
-import { Text } from "basis";
+import { Text } from "@basis";
 import ComponentPreview from "../ComponentPreview";
 import {
   screensState,

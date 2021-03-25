@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useRecoilState } from "recoil";
-import { useTheme } from "basis";
+import { useTheme } from "@basis";
 import { shallowEqualObjects } from "shallow-equal";
 import PlaygroundSettingsInput from "./PlaygroundSettingsInput";
 import PlaygroundSettingsButton from "./PlaygroundSettingsButton";

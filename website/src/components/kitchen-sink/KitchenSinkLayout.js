@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BasisProvider, defaultTheme, Container, Text } from "basis";
+import { BasisProvider, defaultTheme, Container, Text } from "@basis";
 import "typeface-montserrat";
 import "typeface-roboto";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Grid, RadioGroup, Link } from "basis";
+import { Container, Grid, RadioGroup, Link } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 import KitchenSinkForm from "../../../components/kitchen-sink/KitchenSinkForm";
 

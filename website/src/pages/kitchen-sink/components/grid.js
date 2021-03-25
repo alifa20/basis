@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Placeholder } from "basis";
+import { Container, Grid, Placeholder } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function KitchenSinkGrid() {

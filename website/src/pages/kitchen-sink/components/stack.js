@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Stack, Text, Placeholder } from "basis";
+import { Container, Stack, Text, Placeholder } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function MaybePlaceholder({ label, width, height }) {

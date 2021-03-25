@@ -10,7 +10,7 @@ import {
   Text,
   Select,
   Input,
-} from "basis";
+} from "@basis";
 
 import { colorContrast, accessibleContrast } from "../../utils/color";
 

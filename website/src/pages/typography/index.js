@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { upperCaseFirst } from "upper-case-first";
-import { useTheme, Container, Grid, Flex, Text } from "basis";
+import { useTheme, Container, Grid, Flex, Text } from "@basis";
 
 const fontWeightsMap = {
   100: "thin",

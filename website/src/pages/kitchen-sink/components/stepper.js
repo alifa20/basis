@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Stepper } from "basis";
+import { Grid, Stepper } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function KitchenSinkStepper() {

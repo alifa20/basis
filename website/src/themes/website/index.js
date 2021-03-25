@@ -1,4 +1,4 @@
-import { defaultTheme as theme } from "basis";
+import { defaultTheme as theme } from "@basis";
 import button from "./button";
 import field from "./field";
 import input from "./input";

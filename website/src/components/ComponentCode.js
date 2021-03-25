@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { LiveEditor } from "react-live";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { useTheme } from "basis";
+import { useTheme } from "@basis";
 
 function ComponentCode({ className, code }) {
   const theme = useTheme();

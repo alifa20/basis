@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { pascalCase } from "pascal-case";
 import { hex } from "wcag-contrast";
-import { useTheme, Container, Stack, Flex, Text } from "basis";
+import { useTheme, Container, Stack, Flex, Text } from "@basis";
 
 function ColorGroup({ title, subTitle, children }) {
   const theme = useTheme();

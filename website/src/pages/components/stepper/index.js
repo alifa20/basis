@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import RangeSetting from "../../../components/RangeSetting";
 import ComponentContainer from "../../../components/ComponentContainer";
 import { formatCode, nonDefaultProps } from "../../../utils/formatting";

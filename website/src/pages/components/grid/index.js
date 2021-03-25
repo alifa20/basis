@@ -1,5 +1,5 @@
 import React from "react";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import ComponentContainer from "../../../components/ComponentContainer";
 import { formatCode } from "../../../utils/formatting";
 

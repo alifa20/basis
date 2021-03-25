@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Header } from "basis";
+import { Container, Header } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function KitchenSinkHeader() {

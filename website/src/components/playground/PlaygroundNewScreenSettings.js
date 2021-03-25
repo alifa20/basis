@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { useTheme, Text } from "basis";
+import { useTheme, Text } from "@basis";
 import PlaygroundSettingsInput from "./PlaygroundSettingsInput";
 import PlaygroundSettingsButton from "./PlaygroundSettingsButton";
 import {

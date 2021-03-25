@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Stack, Button, Icon } from "basis";
+import { Container, Stack, Button, Icon } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function ButtonStates({ variant, color }) {

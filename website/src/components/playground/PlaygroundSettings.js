@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { List, arrayMove } from "react-movable";
-import { useTheme, Container, Text } from "basis";
+import { useTheme, Container, Text } from "@basis";
 import PlaygroundScreenSettings from "./PlaygroundScreenSettings";
 import PlaygroundNewScreenSettings from "./PlaygroundNewScreenSettings";
 import { screensState, componentPreviewCounterState } from "./recoilState";

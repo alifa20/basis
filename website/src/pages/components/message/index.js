@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import RadioGroupSetting, {
   getRadioOptions,
   getCheckboxOptions,

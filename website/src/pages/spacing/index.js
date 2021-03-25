@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme, Container, Stack, Text } from "basis";
+import { useTheme, Container, Stack, Text } from "@basis";
 
 function SpacingPage() {
   const theme = useTheme();

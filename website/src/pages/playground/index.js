@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Resizable } from "re-resizable";
 import { LiveProvider } from "react-live";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import PlaygroundCodePanel from "../../components/playground/PlaygroundCodePanel";
 import PlaygroundScreen from "../../components/playground/PlaygroundScreen";
 import useLocalStorageValue from "../../components/playground/useLocalStorageValue";

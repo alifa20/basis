@@ -1,6 +1,6 @@
 import React from "react";
 import { LiveProvider } from "react-live";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 import ComponentPreview from "../../../components/ComponentPreview";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
-import { useTheme, Text } from "basis";
+import { useTheme, Text } from "@basis";
 
 function Checkbox({ value, checked, label, onChange }) {
   const theme = useTheme();

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Flex, Placeholder } from "basis";
+import { Button, Container, Flex, Placeholder } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function KitchenSinkFlex() {

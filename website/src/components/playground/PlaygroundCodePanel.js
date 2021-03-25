@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { navigate } from "gatsby";
 import { useRecoilState } from "recoil";
-import { useTheme, Stack, Button, Icon, VisuallyHidden } from "basis";
+import { useTheme, Stack, Button, Icon, VisuallyHidden } from "@basis";
 import { LiveEditor } from "react-live";
 import PlaygroundCodeError from "./PlaygroundCodeError";
 import PlaygroundSettings from "./PlaygroundSettings";

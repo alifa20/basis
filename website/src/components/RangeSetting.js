@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text, Flex, useTheme } from "basis";
+import { Text, Flex, useTheme } from "@basis";
 
 function RangeSetting({
   className,

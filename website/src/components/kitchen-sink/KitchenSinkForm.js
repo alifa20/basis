@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { Form } from "basis";
+import { Form } from "@basis";
 
 function FormContent({ onMount, children }) {
   useEffect(() => {

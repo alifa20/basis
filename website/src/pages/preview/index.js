@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { LiveProvider } from "react-live";
-import * as allDesignSystem from "basis";
+import * as allDesignSystem from "@basis";
 import ComponentPreview from "../../components/ComponentPreview";
 import { getReactLiveNoInline } from "../../utils/ast";
 import { getPreviewCodeFromUrl } from "../../utils/url";

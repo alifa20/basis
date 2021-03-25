@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Stack, Link, Icon, Text } from "basis";
+import { Container, Stack, Link, Icon, Text } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 const backgrounds = [

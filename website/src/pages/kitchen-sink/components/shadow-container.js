@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ShadowContainer, Stack, Text } from "basis";
+import { Container, ShadowContainer, Stack, Text } from "@basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function KitchenSinkShadowContainer() {

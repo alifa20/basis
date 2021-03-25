@@ -1,6 +1,6 @@
 import React from "react";
 import { LiveError, withLive } from "react-live";
-import { useTheme } from "basis";
+import { useTheme } from "@basis";
 
 const PlaygroundCodeError = withLive(({ live }) => {
   const theme = useTheme();

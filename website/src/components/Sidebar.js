@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql, Link as GatsbyLink } from "gatsby";
 import { Location } from "@reach/router";
 import { pascalCase } from "pascal-case";
-import { useTheme, Container, Text, Icon, Link } from "basis";
+import { useTheme, Container, Text, Icon, Link } from "@basis";
 import { version } from "../../../package.json";
 import { trackEvent } from "./Splitbee";
 

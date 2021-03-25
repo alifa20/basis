@@ -5,13 +5,25 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "cd website && yarn build && mv public .. && cd .. && rollup -c",
     "build:watch": "rollup -c -w",
     "start-playground": "cd playground && yarn start",
     "i-all": "yarn && cd playground && yarn && cd .. && cd website && yarn",
     "dev": "npm-run-all --parallel build:watch start-playground",
-    "start-website": "cd website && npm run clean && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-website": "cd website && yarn clean && npm start",
+    "start": "cd website && yarn clean && npm start",
+    "prettier": "prettier --write \"**/*.{js,json,css,md}\"",
+    "lint": "eslint --max-warnings 0 \"**/*.js\"",
+    "test": "cross-env BABEL_ENV=cjs jest",
+    "percy": "percy snapshot public -c .percy.js",
+    "prebuild-basis": "rimraf dist",
+    "build-basis:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src -d dist --ignore \"src/**/*.test.js\"",
+    "build-basis:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src -d dist/esm --ignore \"src/**/*.test.js\"",
+    "build-basis": "yarn build-basis:cjs && yarn build-basis:esm",
+    "prebuild": "rimraf public",
+    "prepublishOnly": "yarn build-basis",
+    "postinstall": "(test -d website && yarn install-website && husky install) || true",
+    "install-website": "cd website && npm install && cd .."
   },
   "repository": {
     "type": "git",

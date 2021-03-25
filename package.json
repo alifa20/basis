@@ -6,7 +6,7 @@
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c",
-    "build-watch": "rollup -c -w",
+    "build:watch": "rollup -c -w",
     "start-playground": "cd playground && npm run start",
     "start-website": "cd website && npm run clean && npm start",
     "i-all": "yarn && cd playground && yarn && cd .. && cd website && yarn",

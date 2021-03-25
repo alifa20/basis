@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React from "react";
 import PropTypes from "prop-types";
 import flattenChildren from "react-keyed-flatten-children";

@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/core */
 import React, { useMemo, useRef } from "react";
 import PropTypes from "prop-types";
 import { getStickyItemInfo } from "../utils/sticky";

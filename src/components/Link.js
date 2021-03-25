@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/core */
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { LinkContext } from "../providers/LinkProvider";

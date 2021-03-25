@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/core */
 import React, {
   useState,
   useEffect,

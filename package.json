@@ -1,15 +1,16 @@
 {
   "name": "basis",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "cd website && yarn build && mv public .. && cd .. && rollup -c",
     "build:watch": "rollup -c -w",
     "start-playground": "cd playground && yarn start",
     "i-all": "yarn && cd playground && yarn && cd .. && cd website && yarn",
-    "dev": "npm-run-all --parallel build:watch start-playground",
+    "dev": "npm-run-all -s build:watch start-playground",
     "start-website": "cd website && yarn clean && npm start",
     "start": "cd website && yarn clean && npm start",
     "prettier": "prettier --write \"**/*.{js,json,css,md}\"",
@@ -19,7 +20,7 @@
     "prebuild-basis": "rimraf dist",
     "build-basis:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src -d dist --ignore \"src/**/*.test.js\"",
     "build-basis:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel src -d dist/esm --ignore \"src/**/*.test.js\"",
-    "build-basis": "yarn build-basis:cjs && yarn build-basis:esm",
+    "build-basis": "rollup -c",
     "prebuild": "rimraf public",
     "prepublishOnly": "yarn build-basis"
   },
@@ -35,10 +36,13 @@
   },
   "homepage": "https://github.com/alifa20/basis#readme",
   "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "styled-components": "^4.4.0"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
     "date-fns": "2.19.0",
@@ -56,9 +60,9 @@
     "@babel/core": "7.13.10",
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/preset-env": "7.13.10",
-    "@babel/preset-react": "7.12.13",
-    "@emotion/babel-preset-css-prop": "10.2.1",
-    "@emotion/core": "10.1.1",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@percy/agent": "0.28.6",
     "@rollup/plugin-babel": "^5.3.0",
     "@testing-library/jest-dom": "5.11.9",
@@ -86,14 +90,15 @@
     "npm-run-all": "^4.1.5",
     "prettier": "2.2.1",
     "prop-types": "15.7.2",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
     "react-test-renderer": "16.14.0",
     "rimraf": "3.0.2",
     "rollup": "^2.42.4",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "yalc": "^1.0.0-pre.50"
   }
 }

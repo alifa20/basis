@@ -1,5 +1,6 @@
 # Build 
 dist
+playground/src/component-lib
 
 # Logs
 logs

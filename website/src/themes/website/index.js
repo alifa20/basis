@@ -5,7 +5,7 @@ import input from "./input";
 import link from "./link";
 import select from "./select";
 
-export default {
+const theTheme = {
   ...theme,
   button: button(theme),
   field: field(theme),
@@ -13,3 +13,4 @@ export default {
   link: link(theme),
   select: select(theme),
 };
+export default theTheme;

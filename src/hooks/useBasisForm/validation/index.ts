@@ -6,3 +6,4 @@ export { validateTextarea } from "./validateTextarea";
 export { validateFrequency } from "./validateFrequency";
 export { validateCheckbox } from "./validateCheckbox";
 export { validateCheckboxGroup } from "./validateCheckboxGroup";
+export { validateAddress } from "./validateAddress";

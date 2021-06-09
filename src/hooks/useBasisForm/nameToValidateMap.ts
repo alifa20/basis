@@ -9,6 +9,7 @@ import {
   validateRadioGroup,
   validateSelect,
   validateTextarea,
+  validateAddress,
 } from "./validation";
 
 export const nameToValidateMap: Record<ComponentNames, ValidateFn> = {
@@ -20,4 +21,5 @@ export const nameToValidateMap: Record<ComponentNames, ValidateFn> = {
   [ComponentNames.Frequency]: validateFrequency as ValidateFn,
   [ComponentNames.Checkbox]: validateCheckbox as ValidateFn,
   [ComponentNames.CheckboxGroup]: validateCheckboxGroup as ValidateFn,
+  [ComponentNames.Address]: validateAddress as ValidateFn,
 };

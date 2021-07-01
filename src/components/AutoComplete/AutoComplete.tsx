@@ -8,7 +8,7 @@ import InternalAutoComplete from "../internal/InternalAutoComplete";
 import { defaultAutoCompleteProps } from "./defaultAutoCompleteProps";
 import { AutoCompleteProps } from "./types";
 
-function AutoComplete<Item>(props: AutoCompleteProps<Item | null>) {
+function AutoComplete<Item>(props: AutoCompleteProps<Item>) {
   const mergedProps = useMergedProps(props, defaultAutoCompleteProps);
 
   const {
@@ -24,7 +24,7 @@ function AutoComplete<Item>(props: AutoCompleteProps<Item | null>) {
     helpText,
     items,
     // getItems,
-    itemToString,
+    itemToString: itemToStringProp,
     stateReducer,
     placeholder,
     isLoading,
@@ -32,6 +32,7 @@ function AutoComplete<Item>(props: AutoCompleteProps<Item | null>) {
     listItem,
     hideLabel,
     testId,
+    defaultValue,
     value,
     optional,
     __internal__open,
@@ -47,6 +48,9 @@ function AutoComplete<Item>(props: AutoCompleteProps<Item | null>) {
   const hasErrors = Array.isArray(error) ? error.length !== 0 : !!error;
   // const items = await getItems();
 
+  const itemToString = (item?: Item | null) =>
+    itemToStringProp ? itemToStringProp?.(item!) : item ? String(item) : "";
+
   const {
     isOpen,
     getMenuProps,
@@ -60,15 +64,15 @@ function AutoComplete<Item>(props: AutoCompleteProps<Item | null>) {
     // selectedItem,
   } = useCombobox<Item | null>({
     items,
-    defaultSelectedItem: value,
+    defaultSelectedItem: defaultValue,
+    defaultInputValue: itemToString(value),
     ...(stateReducer && { stateReducer }),
     onInputValueChange,
     onSelectedItemChange: (changed) => {
       onChange?.(changed.selectedItem);
       onSelectedItemChange?.(changed);
     },
-    itemToString: (item) =>
-      itemToString ? itemToString?.(item) : item ? String(item) : "",
+    itemToString,
   });
 
   const onClear = () => {

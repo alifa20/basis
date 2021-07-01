@@ -1,12 +1,10 @@
 import { UseComboboxState, UseComboboxStateChangeOptions } from "downshift";
 import React from "react";
 
-export type AutoCompleteListItem<Item> = Item & {
-  id: string;
-};
+export type AutoCompleteListItem<Item> = Item;
 
 export type InternalAutoCompleteProps<Item> = {
-  defaultValue?: Item | null;
+  defaultValue?: Item;
   label: string;
   items: AutoCompleteListItem<Item>[];
   // getItems: (
@@ -16,12 +14,13 @@ export type InternalAutoCompleteProps<Item> = {
   placeholder?: string;
   itemToString?: (item: Item) => string;
   isLoading?: boolean;
-  listItem?: React.ComponentType<{ inputValue: string; item: Item | null }>;
+  listItem?: React.ComponentType<{ inputValue: string; item: Item }>;
   itemsFooter?: React.ComponentType;
-  value?: Item | null;
+  value?: Item;
+  selectedItem?: Item;
   error?: string | string[];
   innerRef?: React.Ref<HTMLInputElement>;
-  onChange?: (changed?: Item | null) => void;
+  onChange?: (changed?: Item) => void;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onMouseDown?: React.MouseEventHandler<HTMLLabelElement>;

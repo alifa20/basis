@@ -42,7 +42,9 @@ const itemToString = (value) =>
     : "";
 
 function KitchenSinkAccordion() {
-  // const { methods, Field } = useBasisForm();
+  // const { methods, Field } = useBasisForm({
+
+  // });
   // const handleStart = () => {};
 
   return (
@@ -59,8 +61,8 @@ function KitchenSinkAccordion() {
               listItem={({ item }) => {
                 return <div>{`${item.AddressLine} $$$ ${item.Locality}`}</div>;
               }}
-            />
-            <Form methods={methods} onSubmit={handleStart}>
+            /> */}
+            {/* <Form methods={methods} onSubmit={handleStart}>
               <Field
                 name="myAddress"
                 label="Address complete"
@@ -69,6 +71,7 @@ function KitchenSinkAccordion() {
                 isLoading={false}
                 onSelectedItemChange={() => {}}
                 onInputValueChange={() => {}}
+                defaultValue={items[0]}
                 itemToString={itemToString}
                 as={AutoComplete}
               />
@@ -86,15 +89,27 @@ function KitchenSinkAccordion() {
             />
 
             <AutoComplete label="Optional" optional items={[]} />
-            <AutoComplete label="With value" items={items} value={items[0]} />
+            <AutoComplete
+              label="With value"
+              items={items}
+              value={items[0]}
+              itemToString={itemToString}
+            />
 
             <AutoComplete label="Focus" items={[]} __internal__focus />
             <AutoComplete label="Loading" items={[]} __internal__loading />
             <AutoComplete
-              label="Big address"
+              label="Big input value"
               optional
-              items={[]}
-              placeholder={itemToString(items[0])}
+              items={items}
+              value={itemToString(items[0])}
+            />
+            <AutoComplete
+              label="Big input value with loading"
+              optional
+              isLoading
+              items={items}
+              value={itemToString(items[0])}
             />
             <AutoComplete label="With error" items={[]} error="Required" />
 

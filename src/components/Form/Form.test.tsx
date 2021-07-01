@@ -3,6 +3,7 @@ import React from "react";
 import { SubmitHandler } from "react-hook-form";
 import {
   // AutoComplete,
+  AutoComplete,
   Button,
   Checkbox,
   CheckboxGroup,
@@ -24,6 +25,7 @@ import {
   waitFor,
 } from "../../utils/test";
 import { DateInputValue, FrequencyValue } from "../../values";
+import AutoComplete from "../AutoComplete/AutoComplete";
 interface SimpleFormValues {
   testInput: string;
 }
@@ -44,6 +46,16 @@ const SimpleForm = ({ onSubmit = () => {}, validate }: SimpleFormProps) => {
   );
 };
 
+type SearchAddress = {
+  AddressLine: string;
+  id: string;
+  Country: string;
+  CountryCode: string;
+  Locality: string;
+  Postcode: string;
+  RecordId: string;
+  State: string;
+};
 interface ComplexFormValues {
   testInput: string;
   testRadio: "value1" | "value2";
@@ -55,17 +67,7 @@ interface ComplexFormValues {
   testTextarea: string;
   testCheckboxGroup: Record<string, boolean>;
   testCustomInput: string;
-  address: {
-    auto: {
-      AddressLine: string;
-      Country: string;
-      CountryCode: string;
-      Locality: string;
-      Postcode: string;
-      RecordId: string;
-      State: string;
-    };
-  };
+  address: SearchAddress;
 }
 
 const radioOptions = [
@@ -110,6 +112,21 @@ const ComplexForm = ({
 }: ComplexFormProps) => {
   const { methods, Field, CustomField } = useBasisForm<ComplexFormValues>();
 
+  const itemToString = (e: SearchAddress | null) => (e ? e.AddressLine : "");
+  const items: SearchAddress[] =
+    // = [];
+    [
+      {
+        id: "AuPaf643492660",
+        RecordId: "AuPaf643492660",
+        AddressLine: "Abc, 246-250 Riverside Bvd",
+        Locality: "DOUGLAS",
+        State: "QLD",
+        Postcode: "4814",
+        Country: "Australia",
+        CountryCode: "AU",
+      },
+    ];
   return (
     <Form testId={testId} methods={methods} onSubmit={onSubmit}>
       <Field
@@ -169,17 +186,23 @@ const ComplexForm = ({
         {(props) => <Input label="Custom Input" {...props} testId="field" />}
       </CustomField>
 
-      {/* <Field
+      <Field
         name="address"
         label="Address complete"
-        items={[]}
+        items={items}
+        as={AutoComplete}
+      />
+
+      <AutoComplete
+        label="Address complete"
+        items={items}
         placeholder="Search here!"
         isLoading={false}
         onSelectedItemChange={() => {}}
         onInputValueChange={() => {}}
-        itemToString={() => ""}
-        as={AutoComplete}
-      /> */}
+        value={items[0]}
+        itemToString={itemToString}
+      />
 
       <Button type="submit">Submit</Button>
     </Form>

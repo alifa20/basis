@@ -7,6 +7,8 @@ import {
   PathValue,
 } from "react-hook-form";
 import { ValidationError, ValidateFn } from "../../types";
+import AutoComplete from "../AutoComplete";
+import { AutoCompleteProps } from "../AutoComplete/types";
 
 export type Primitive =
   | null
@@ -82,7 +84,7 @@ type FieldProps<
     "Either you passed a non basis component or you missed name prop";
 
 export type FieldComponent<TFieldValues extends FieldValues = FieldValues> = <
-  P = ValueProps<any>
+  P
 >(
   props: FieldProps<TFieldValues, P>
 ) => any;
@@ -129,3 +131,38 @@ export type CustomFieldComponent<
 > = <Name extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>(
   props: CustomFieldProps<TFieldValues, Name>
 ) => any;
+
+type FieldProps2<
+  TFieldValues extends FieldValues = FieldValues,
+  Props = any
+> = Props extends ValueProps<infer Value>
+  ? // check if value of prop is compatible with type from Field path
+    // Infer the type of Error expected by the validate function
+    FieldInnerProps<TFieldValues, Value, Props>
+  : // show nicer error message for component mismatch
+    "Either you passed a non basis component or you missed name prop";
+
+type SearchAddress = {
+  val: string;
+  id: string;
+};
+interface FormValues {
+  address: SearchAddress;
+}
+
+const items: SearchAddress[] = [];
+const itemToString = (e: SearchAddress | null) => (e ? e.val : "");
+
+type Props = FieldProps2<FormValues, AutoCompleteProps<SearchAddress>>;
+export const props: Props = {
+  name: "address",
+  label: "Address complete",
+  items: items,
+  placeholder: "Search here!",
+  isLoading: false,
+  onSelectedItemChange: () => {},
+  onInputValueChange: () => {},
+  value: items[0],
+  itemToString: itemToString,
+  as: AutoComplete,
+};

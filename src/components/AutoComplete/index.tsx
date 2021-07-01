@@ -3,11 +3,12 @@ import { ComponentNames } from "../componentNames";
 import { AutoCompleteProps } from "./types";
 import { default as AutoCompleteInternal } from "./AutoComplete";
 import { defaultAutoCompleteProps } from "./defaultAutoCompleteProps";
+import { any } from "prop-types";
 
 // 🐨 Redecalare forwardRef
 // Ref: https://fettblog.eu/typescript-react-generic-forward-refs/?utm_source=oida&utm_medium=email#option-3%3A-augment-forwardref
 declare module "react" {
-  function forwardRef<T, P>(
+  function forwardRef<T, P = {}>(
     render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 }
@@ -19,7 +20,9 @@ function AutoCompleteComponent<AutoCompleteItem>(
   return <AutoCompleteInternal {...props} innerRef={ref} />;
 }
 
-const AutoComplete = forwardRef(AutoCompleteComponent);
+type Test = <Item>(props: AutoCompleteProps<Item>) => any;
+
+const AutoComplete = AutoCompleteInternal as Test;
 
 // 🚨  Ref: https://stackoverflow.com/a/58473012/340827
 (AutoComplete as NamedExoticComponent).displayName =

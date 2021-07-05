@@ -1,24 +1,24 @@
-import React, { useState, useMemo, useCallback, useRef } from "react";
 import {
-  isValid as isDateValid,
   format as formatDate,
+  isValid as isDateValid,
   parseISO,
 } from "date-fns";
 import { nanoid } from "nanoid";
-import Field from "../internal/Field";
-import InternalInput from "../internal/InternalInput";
-import Grid from "../Grid";
-import { DayMode, InternalDateInputProps, YearMode } from "./types";
-import mergeRefs from "../../utils/mergeRefs";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   DAY_REGEX,
   FOUR_DIGITS_YEAR_REGEX,
   MONTH_REGEX,
   TWO_DIGITS_YEAR_REGEX,
 } from "../../hooks/useBasisForm/validation/validateDateInput";
-import { defaultDateInputProps } from "./defaultDateInputProps";
 import { useMergedProps } from "../../hooks/useMergedProps";
+import mergeRefs from "../../utils/mergeRefs";
 import { DateInputValue } from "../../values";
+import Field from "../internal/Field";
+import InternalInput from "../internal/InternalInput";
+import { defaultDateInputProps } from "./defaultDateInputProps";
+import InternalDateInput from "./InternalDateInput";
+import { DayMode, InternalDateInputProps, YearMode } from "./types";
 
 const { COLORS } = InternalInput;
 const DAY_MODES = ["none", "2-digits"] as const;
@@ -129,6 +129,7 @@ function DateInput(props: InternalDateInputProps) {
     "aria-labelledby": ariaLabelledby,
     testId,
     error,
+    color,
   } = mergedProps;
   const [labelId] = useState(() => `date-input-${nanoid()}`);
   const [auxId] = useState(() => `date-input-aux-${nanoid()}`);
@@ -195,74 +196,16 @@ function DateInput(props: InternalDateInputProps) {
         aria-labelledby={ariaLabelledby || labelId}
         aria-describedby={helpText || hasErrors ? auxId : undefined}
       >
-        <Grid
-          cols={
-            dayMode === "none" && yearMode === "2-digits"
-              ? 2
-              : dayMode === "2-digits" && yearMode === "4-digits"
-              ? 4
-              : 3
-          }
-          colsGap={1}
-        >
-          {dayMode === "2-digits" && (
-            <Grid.Item colSpan={0}>
-              <InternalInput
-                name="day"
-                aria-label="day"
-                variant="numeric"
-                color={props.color}
-                placeholder="DD"
-                maxLength="2"
-                disabled={disabled}
-                onFocus={onFocus}
-                onBlur={onDateInputBlur}
-                value={value.day}
-                onChange={onChange}
-              />
-            </Grid.Item>
-          )}
-          <Grid.Item colSpan={dayMode === "2-digits" ? 1 : 0}>
-            <InternalInput
-              name="month"
-              aria-label="month"
-              variant="numeric"
-              color={props.color}
-              placeholder="MM"
-              maxLength="2"
-              disabled={disabled}
-              onFocus={onFocus}
-              onBlur={onDateInputBlur}
-              value={value.month}
-              onChange={onChange}
-            />
-          </Grid.Item>
-          <Grid.Item
-            colSpan={
-              dayMode === "none" && yearMode === "2-digits"
-                ? "1"
-                : dayMode === "none" && yearMode === "4-digits"
-                ? "1-2"
-                : dayMode === "2-digits" && yearMode === "2-digits"
-                ? "2"
-                : "2-3"
-            }
-          >
-            <InternalInput
-              name="year"
-              aria-label="year"
-              variant="numeric"
-              color={props.color}
-              placeholder={yearMode === "2-digits" ? "YY" : "YYYY"}
-              maxLength={yearMode === "2-digits" ? "2" : "4"}
-              disabled={disabled}
-              onFocus={onFocus}
-              onBlur={onDateInputBlur}
-              value={value.year}
-              onChange={onChange}
-            />
-          </Grid.Item>
-        </Grid>
+        <InternalDateInput
+          onChange={onChange}
+          onBlur={onDateInputBlur}
+          color={color}
+          dayMode={dayMode}
+          yearMode={yearMode}
+          disabled={disabled}
+          onFocus={onFocus}
+          value={value}
+        />
       </div>
     </Field>
   );

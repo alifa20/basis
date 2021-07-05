@@ -5,6 +5,7 @@ import { ComponentNames } from "../componentNames";
 import { default as DateInputInternal } from "./DateInput";
 import { default as DateInputDeprecated } from "./DateInput_deprecated";
 import { defaultDateInputProps } from "./defaultDateInputProps";
+import MyDateInput from "./MyDateInput";
 import {
   DateInputProps,
   setDeprecatedProps as shouldUseDeprecatedDateInput,
@@ -29,6 +30,7 @@ const DateInputComponent = (
   }
 
   return <DateInputInternal {...props} innerRef={ref} />;
+  // return <MyDateInput />
 };
 // can't be an arrow function due to: https://github.com/yannickcr/eslint-plugin-react/issues/2269
 const DateInput = forwardRef(

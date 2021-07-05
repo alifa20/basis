@@ -1,6 +1,15 @@
+/* eslint-disable no-console */
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Stack, Button, Icon } from "basis";
+import {
+  DateInput,
+  Container,
+  Stack,
+  Button,
+  Icon,
+  useBasisForm,
+  Form,
+} from "basis";
 import KitchenSinkLayout from "../../../components/kitchen-sink/KitchenSinkLayout";
 
 function ButtonStates({ variant, color }) {
@@ -50,31 +59,12 @@ ButtonStates.propTypes = {
 };
 
 function KitchenSinkButton() {
+  const { methods } = useBasisForm();
   return (
     <KitchenSinkLayout name="Button">
-      <Container padding="4">
-        <Stack direction="horizontal" gap="8">
-          <Button>Default</Button>
-          <Button width="256">256px wide</Button>
-        </Stack>
-      </Container>
-
-      <Container padding="4" width="500">
-        <Button width="100%">100%</Button>
-        <Button variant="secondary" width="50%" margin="4 0 0 0">
-          50%
-        </Button>
-      </Container>
-
-      <ButtonStates variant="primary" color="highlight.blue.t100" />
-      <ButtonStates variant="primary" color="white" />
-      <ButtonStates variant="primary" color="green" />
-
-      <ButtonStates variant="secondary" color="highlight.blue.t100" />
-      <ButtonStates variant="secondary" color="black" />
-      <ButtonStates variant="secondary" color="white" />
-
-      <ButtonStates variant="icon" color="highlight.blue.t100" />
+      <Form methods={methods} onSubmit={console.log}>
+        <DateInput />
+      </Form>
     </KitchenSinkLayout>
   );
 }

@@ -5,10 +5,9 @@ import { ComponentNames } from "../componentNames";
 import { default as DateInputInternal } from "./DateInput";
 import { default as DateInputDeprecated } from "./DateInput_deprecated";
 import { defaultDateInputProps } from "./defaultDateInputProps";
-import MyDateInput from "./MyDateInput";
 import {
   DateInputProps,
-  setDeprecatedProps as shouldUseDeprecatedDateInput,
+  setDeprecatedProps as shouldUseDeprecatedDateInput
 } from "./types";
 
 const { COLORS, DEFAULT_PROPS, DAY_MODES, YEAR_MODES } = DateInputInternal;

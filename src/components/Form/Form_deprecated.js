@@ -12,6 +12,7 @@ import { responsiveWidthType } from "../../hooks/useResponsiveProp";
 import useResponsivePropsCSS from "../../hooks/useResponsivePropsCSS";
 import { responsiveSize } from "../../utils/css";
 import { formatArray } from "../../utils/array";
+import { useForm } from "react-hook-form";
 
 const DEFAULT_PROPS = {
   debug: false,
@@ -33,6 +34,7 @@ function Form(_props) {
     children,
     testId,
   } = props;
+  useForm({initialValues})
   const [state, setState] = useState({
     values: initialValues,
     errors: initialErrors ?? {},

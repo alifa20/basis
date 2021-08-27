@@ -12,7 +12,7 @@ const { TYPES, VARIANTS, COLORS } = InternalInput;
 
 const DEFAULT_PROPS = {
   ...defaultInputProps,
-  color: InternalInput.DEFAULT_PROPS.color,
+  // color: InternalInput.DEFAULT_PROPS.color,
   validate: validateInput,
 };
 

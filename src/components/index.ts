@@ -15,6 +15,7 @@ export { default as Grid } from "./Grid";
 export { default as Header } from "./Header";
 export { default as Icon } from "./Icon";
 export { default as Input } from "./Input";
+export { default as InternalInput } from "./internal/InternalInput";
 export { default as Logo } from "./Logo";
 export { default as Link } from "./Link";
 export { default as List } from "./List";

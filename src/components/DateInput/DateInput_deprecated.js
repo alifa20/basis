@@ -25,7 +25,7 @@ const YEAR_MODES = ["2-digits", "4-digits"];
 
 const DEFAULT_PROPS = {
   ...defaultDateInputProps,
-  color: InternalInput.DEFAULT_PROPS.color,
+  // color: InternalInput.DEFAULT_PROPS.color,
   validate: (value, { isEmpty, dayMode, yearMode }) => {
     if (isEmpty(value)) {
       return "Required";

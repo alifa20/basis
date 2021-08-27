@@ -33,12 +33,27 @@ const Input = (props: InternalInputProps) => {
     __internal__focus,
   } = mergedProps;
 
+  // const [inputId] = useState(() => id ?? `input-${nanoid()}`);
+  // const [auxId] = useState(() => `input-aux-${nanoid()}`);
   const [inputId] = useState(() => id ?? `input-${nanoid()}`);
   const [auxId] = useState(() => `input-aux-${nanoid()}`);
 
   const fieldErrors =
     Array.isArray(error) || error === undefined ? error : [error];
   const hasErrors = Array.isArray(error) ? error.length !== 0 : !!error;
+
+  console.log("mergedProps", mergedProps);
+
+  //   {
+  //     "type": "text",
+  //     "variant": "text",
+  //     "disabled": false,
+  //     "pasteAllowed": true,
+  //     "optional": false,
+  //     "label": "name",
+  //     "v2": true,
+  //     "name": "name"
+  // }
 
   return (
     <Field
@@ -48,31 +63,37 @@ const Input = (props: InternalInputProps) => {
       labelFor={inputId}
       auxId={auxId}
       helpText={helpText}
+      // @ts-ignore
       errors={fieldErrors}
     >
       <InternalInput
-        id={label ? inputId : undefined}
+        // id={label ? inputId : undefined}
+        // type={type}
+        // variant={variant}
         testId={testId}
-        innerRef={innerRef}
-        type={type}
-        variant={variant}
-        prefix={prefix}
-        suffix={suffix}
-        maxLength={maxLength}
-        autoComplete={autoComplete}
-        placeholder={placeholder}
-        color={props.color}
-        disabled={disabled}
-        pasteAllowed={pasteAllowed}
-        isValid={!hasErrors}
-        describedBy={helpText || hasErrors ? auxId : undefined}
-        onFocus={onFocus}
+        // disabled={disabled}
+        // pasteAllowed={pasteAllowed}
         onBlur={onBlur}
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        __internal__focus={__internal__focus}
+        // @ts-ignore
+        label={label}
+        // innerRef={innerRef}
+        // prefix={prefix}
+        // suffix={suffix}
+        // maxLength={maxLength}
+        // autoComplete={autoComplete}
+        // placeholder={placeholder}
+        // color={props.color}
+        // isValid={!hasErrors}
+        // describedBy={helpText || hasErrors ? auxId : undefined}
+        // onFocus={onFocus}
+        // onBlur={onBlur}
+        // value={value}
+        // onChange={onChange}
+        // onKeyDown={onKeyDown}
+        // __internal__focus={__internal__focus}
+        {...mergedProps}
       />
+      {/* <InternalInput {...mergedProps} /> */}
     </Field>
   );
 };

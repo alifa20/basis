@@ -20,13 +20,12 @@ import { defaultDateInputProps } from "./defaultDateInputProps";
 import { useMergedProps } from "../../hooks/useMergedProps";
 import { DateInputValue } from "../../values";
 
-const { COLORS } = InternalInput;
 const DAY_MODES = ["none", "2-digits"] as const;
 const YEAR_MODES = ["2-digits", "4-digits"] as const;
 
 export const DEFAULT_PROPS = {
   ...defaultDateInputProps,
-  color: InternalInput.DEFAULT_PROPS.color,
+  // color: InternalInput.DEFAULT_PROPS.color,
   validate: (value: DateInputValue, { isEmpty, dayMode, yearMode }: any) => {
     if (isEmpty(value)) {
       return "Required";
@@ -76,7 +75,6 @@ export const DEFAULT_PROPS = {
   },
 } as const;
 
-DateInput.COLORS = COLORS;
 DateInput.DAY_MODES = DAY_MODES;
 DateInput.YEAR_MODES = YEAR_MODES;
 DateInput.DEFAULT_PROPS = DEFAULT_PROPS;

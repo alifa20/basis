@@ -60,6 +60,8 @@ interface InternalInputProps {
 }
 
 const InternalInput = (props: InternalInputProps) => {
+  console.log("props", JSON.stringify(props));
+
   const {
     name,
     parentName,

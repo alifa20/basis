@@ -10,23 +10,23 @@ import {
   setDeprecatedProps as shouldUseDeprecatedDateInput,
 } from "./types";
 
-const { COLORS, DEFAULT_PROPS, DAY_MODES, YEAR_MODES } = DateInputInternal;
+const { DEFAULT_PROPS, DAY_MODES, YEAR_MODES } = DateInputInternal;
 
 interface StaticProperties {
   YEAR_MODES: typeof DateInputInternal.YEAR_MODES;
   DAY_MODES: typeof DateInputInternal.DAY_MODES;
-  COLORS: typeof DateInputInternal.COLORS;
+  // COLORS: typeof DateInputInternal.COLORS;
   DEFAULT_PROPS: typeof DateInputInternal.DEFAULT_PROPS;
 }
 const DateInputComponent = (
   props: DateInputProps,
   ref: React.Ref<HTMLDivElement>
 ) => {
-  const isDeprecatedForm = useIsDeprecatedForm();
+  // const isDeprecatedForm = useIsDeprecatedForm();
 
-  if (shouldUseDeprecatedDateInput(props, isDeprecatedForm)) {
-    return <DateInputDeprecated {...props} />;
-  }
+  // if (shouldUseDeprecatedDateInput(props, isDeprecatedForm)) {
+  //   return <DateInputDeprecated {...props} />;
+  // }
 
   return <DateInputInternal {...props} innerRef={ref} />;
 };
@@ -41,7 +41,7 @@ DateInput.defaultProps = defaultDateInputProps;
 
 DateInput.YEAR_MODES = YEAR_MODES;
 DateInput.DAY_MODES = DAY_MODES;
-DateInput.COLORS = COLORS;
+// DateInput.COLORS = COLORS;
 DateInput.DEFAULT_PROPS = DEFAULT_PROPS;
 
 export default DateInput;

@@ -8,5 +8,6 @@ export const useMergedProps = <
   props: T,
   defaultProps: U
 ) => {
-  return useMemo(() => mergeProps(props, defaultProps), [props, defaultProps]);
+  // return useMemo(() => mergeProps(props, defaultProps), [props, defaultProps]);
+  return mergeProps(props, defaultProps);
 };

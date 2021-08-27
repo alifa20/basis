@@ -14,7 +14,7 @@ const YEARS_REGEX = /^\d{1,2}$/;
 const MONTHS_REGEX = /^\d{1,2}$/;
 
 const DEFAULT_PROPS = {
-  color: InternalInput.DEFAULT_PROPS.color,
+  // color: InternalInput.DEFAULT_PROPS.color,
   disabled: false,
   optional: false,
   validate: ({ years, months }) => {

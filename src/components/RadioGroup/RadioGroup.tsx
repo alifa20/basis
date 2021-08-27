@@ -10,7 +10,7 @@ const { COLORS } = InternalRadioGroup;
 
 const DEFAULT_PROPS = {
   ...defaultRadioGroupProps,
-  color: InternalRadioGroup.DEFAULT_PROPS.color,
+  // color: InternalRadioGroup.DEFAULT_PROPS.color,
   // @ts-ignore
   validate: (value, { isEmpty }) => {
     if (isEmpty(value)) {
@@ -36,7 +36,7 @@ function RadioGroup(props: InternalRadioGroupProps) {
     innerRef,
     disabled,
     optional,
-    color = DEFAULT_PROPS.color,
+    color = "white",
     error,
     onChange,
     onFocus,

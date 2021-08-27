@@ -23,7 +23,7 @@ function isFrequencySelected(frequency, frequencyPropsMap) {
 
 const DEFAULT_PROPS = {
   ...defaultFrequencyProps,
-  color: InternalInput.DEFAULT_PROPS.color,
+  // color: InternalInput.DEFAULT_PROPS.color,
   validate: (value, { isInputEmpty, isFrequencyEmpty }) => {
     const errors = [];
 

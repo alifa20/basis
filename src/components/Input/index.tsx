@@ -23,11 +23,11 @@ const InputComponent = (
   props: InputProps,
   ref: React.Ref<HTMLInputElement>
 ) => {
-  const isDeprecatedForm = useIsDeprecatedForm();
+  // const isDeprecatedForm = useIsDeprecatedForm();
 
-  if (shouldUseDeprecatedInput(props, isDeprecatedForm)) {
-    return <InputDeprecated {...props} />;
-  }
+  // if (shouldUseDeprecatedInput(props, isDeprecatedForm) && !props.v2) {
+  //   return <InputDeprecated {...props} />;
+  // }
 
   return <InputInternal {...props} innerRef={ref} />;
 };

@@ -28,6 +28,7 @@ export interface DeprecatedInputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   validate?: boolean | ((value: any, data: any) => string | string[] | null);
   __internal__focus?: boolean;
+  v2?: boolean;
 }
 
 export interface InternalInputProps {
@@ -57,6 +58,7 @@ export interface InternalInputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   error?: string | string[];
   __internal__focus?: boolean;
+  v2?: boolean;
 }
 
 export type InputProps = InternalInputProps | DeprecatedInputProps;

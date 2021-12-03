@@ -4,6 +4,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import FieldItem from '../FieldItem';
+import { useState } from 'react';
 
 // const Btn = ({ rightIcon, onClick }) => <Button
 
@@ -28,15 +29,33 @@ export type Props<Option> = {
   options: Option[];
   optionToString?: (option: Option) => string;
   optionComponent?: React.ComponentType<{ option: Option }>;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  // onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (option: Option) => void;
   testId?: string
   error?: string;
 }
 
+const OptionItem = ({ option }) => <SimpleGrid columns={3} columnGap={3} w="full">
+  <GridItem rowSpan={2} colSpan={1}  >
+    <Box bg='gray.400' p={4} color='white' display='flex' justifyContent='center' w='150px'>
+      Image
+    </Box>
+  </GridItem>
+  <GridItem colSpan={2}  >{option.data.name}</GridItem>
+  <GridItem colSpan={2}  >{option.data.description}</GridItem>
+  <GridItem colSpan={4} />
+</SimpleGrid>
 
-const Dropdown = <T extends BaseOption>({ label, title, error, options, optionComponent: OptionComponent, optionToString }: Props<T>) => {
+const Dropdown = <T extends BaseOption>({ label, title, error, options, optionComponent: OptionComponent, optionToString, onChange }: Props<T>) => {
+  const [pickedItem, setPickedItem] = useState<T | null>(null);
+
+  const handleChange = (option: T) => {
+    onChange?.(option);
+    setPickedItem(option)
+  }
+
   return <FieldItem error={error}>
-    <Menu >
+    <Menu>
       <MenuButton
         px={4}
         py={2}
@@ -44,28 +63,21 @@ const Dropdown = <T extends BaseOption>({ label, title, error, options, optionCo
         transition='all 0.2s'
         borderRadius='none'
         borderWidth='4px'
-        w={'400px'}
+        w={'500px'}
         _hover={{ bg: 'gray.100' }}
         // _expanded={{ bg: 'blue.400' }}
         _focus={{ boxShadow: 'outline' }}
       >
-        <Flex justifyContent="space-between" >
+        {pickedItem && <Flex textAlign="left" fontWeight='normal'><OptionItem option={pickedItem} /></Flex>}
+
+        {!pickedItem && <Flex justifyContent="space-between">
           {title}
           <ChevronDownIcon />
-        </Flex>
+        </Flex>}
       </MenuButton>
-      <MenuList p={0} w={'100%'}>
-        {options.map(option => <MenuItem key={option.data.name} p={5}>
-          <SimpleGrid columns={3} columnGap={3} w="full">
-            <GridItem rowSpan={2} colSpan={1}  >
-              <Box bg='gray.400' p={4} color='white' display='flex' justifyContent='center' w='150px'>
-                Image
-              </Box>
-            </GridItem>
-            <GridItem colSpan={2}  >{option.data.name}</GridItem>
-            <GridItem colSpan={2}  >{option.data.description}</GridItem>
-            <GridItem colSpan={4} />
-          </SimpleGrid>
+      <MenuList p={0} w={'100%'}  >
+        {options.map(option => <MenuItem key={option.data.name} onClick={(e) => handleChange(option)} p={5}>
+          <OptionItem option={option} />
         </MenuItem>)}
       </MenuList>
     </Menu>

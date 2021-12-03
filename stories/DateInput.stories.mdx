@@ -1,0 +1,24 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { DateInput } from '../src/components';
+
+<Meta title="Complex-Components/DateInput" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="default">
+    <DateInput />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="withError">
+    <DateInput error="Required" />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={DateInput} />

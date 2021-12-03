@@ -1,0 +1,28 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Select } from '../src/components';
+
+<Meta title="Simple-Components/Select" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="default">
+    <Select label="Select input">
+      <option value="select">Select one...</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </Select>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="withError">
+    <Select error="Required" label="Select with Error" />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Select} />

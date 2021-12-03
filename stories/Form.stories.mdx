@@ -1,0 +1,75 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Input, Button, DateInput, Select } from '../src/components';
+import {
+  Container,
+  VStack,
+  Heading,
+  Text,
+  SimpleGrid,
+  GridItem,
+} from '@chakra-ui/layout';
+
+<Meta title="Demo/Form" />
+
+export const Template = (args) => (
+  <Container>
+    <VStack w="full" h="full" spacing={8} alignItems="flex-start">
+      <VStack w="full" h="full" alignItems="flex-start">
+        <Heading size="lg">Your details</Heading>
+        <Text>This is a demo form</Text>
+      </VStack>
+      <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
+        <GridItem colSpan={1}>
+          <Input
+            label="First name"
+            placeholder="John"
+            {...(args.firstNameError && { error: 'Required' })}
+          />
+        </GridItem>
+        <GridItem colSpan={1}>
+          <Input
+            label="Last name"
+            placeholder="Smith"
+            {...(args.lastNameError && { error: 'Required' })}
+          />
+        </GridItem>
+        <GridItem colSpan={1}>
+          <Select label="Gender">
+            <option value="select">Select</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+          </Select>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <DateInput {...(args.dateHasError && { error: 'Required' })} />
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Input
+            label="Address"
+            placeholder="69-73 Pitt St, Sydney NSW 2000"
+            {...(args.addressHasError && { error: 'Required' })}
+          />
+        </GridItem>
+      </SimpleGrid>
+      <Button>Submit</Button>
+    </VStack>
+  </Container>
+);
+
+This is a demo of components in a form!
+
+<Preview>
+  <Story
+    name="Form"
+    args={{
+      firstNameError: false,
+      lastNameError: false,
+      dateHasError: false,
+      addressHasError: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+<ArgsTable story="Basic usage" />

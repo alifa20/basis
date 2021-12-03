@@ -1,0 +1,45 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import {
+  Button,
+  Input,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Skeleton,
+} from '../src/components';
+import { Skeleton } from '@chakra-ui/react';
+
+<Meta title="Overlay/Popover" />
+
+Here's some _markdown_!
+
+# Preview
+
+export const Template = (args) => {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <Button>Trigger</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverHeader>Confirmation!</PopoverHeader>
+        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
+<Preview>
+  <Story name="default" args={{ helpText: false }}>
+    {Template.bind({})}
+  </Story>
+</Preview>
+# Props
+
+<Props of={Popover} />

@@ -1,0 +1,85 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "chakra-basis",
+  "author": "Ali Fathieh",
+  "module": "dist/chakra-basis.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/chakra-basis.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/chakra-basis.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@size-limit/preset-small-lib": "^6.0.3",
+    "@storybook/addon-a11y": "^6.3.12",
+    "@storybook/addon-docs": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addon-toolbars": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "babel-loader": "^8.2.3",
+    "chromatic": "^6.0.5",
+    "husky": "^7.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-is": "^17.0.2",
+    "size-limit": "^6.0.3",
+    "storybook-addon-performance": "^0.16.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
+    "yalc": "^1.0.0-pre.53"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.6.10",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^4"
+  }
+}

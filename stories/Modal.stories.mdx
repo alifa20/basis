@@ -1,0 +1,54 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Button, Input, Modal } from '../src/components';
+import { Skeleton } from '@chakra-ui/react';
+
+<Meta title="Overlay/Modal" />
+
+Here's some _markdown_!
+
+# Preview
+
+export const Template = (args) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Button w={200} onClick={onOpen}>
+        Open Modal
+      </Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        title="Modal Title"
+        footer={
+          <>
+            <Button onClick={onClose}>Close</Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </>
+        }
+      >
+        <Skeleton w={1 / 3} my={2} height="10px" />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+        <Skeleton height="10px" my={2} />
+      </Modal>
+    </>
+  );
+};
+
+<Preview>
+  <Story name="default" args={{ helpText: false }}>
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Modal} />

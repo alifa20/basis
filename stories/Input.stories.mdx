@@ -1,0 +1,35 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Input } from '../src/components';
+
+<Meta title="Simple-Components/Input" />
+
+Here's some _markdown_!
+
+# Preview
+
+export const Template = (args) => <Input label="Default input" {...args} />;
+
+<Preview>
+  <Story name="default" args={{ helpText: false }}>
+    {Template.bind({})}
+  </Story>
+</Preview>
+
+export const WithError = ({ helpText, ...args }) => (
+  <Input
+    label="With error input"
+    {...args}
+    error="Required"
+    {...(helpText && { helpText: 'This is the help text!' })}
+  />
+);
+
+<Preview>
+  <Story name="withError" args={{ helpText: false }}>
+    {WithError.bind({})}
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Input} />

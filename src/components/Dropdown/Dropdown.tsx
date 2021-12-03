@@ -2,9 +2,8 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import { GridItem, SimpleGrid } from '@chakra-ui/layout';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { Box, Flex } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import FieldItem from '../FieldItem';
-import { useState } from 'react';
 
 // const Btn = ({ rightIcon, onClick }) => <Button
 
@@ -46,7 +45,7 @@ const OptionItem = ({ option }) => <SimpleGrid columns={3} columnGap={3} w="full
   <GridItem colSpan={4} />
 </SimpleGrid>
 
-const Dropdown = <T extends BaseOption>({ label, title, error, options, optionComponent: OptionComponent, optionToString, onChange }: Props<T>) => {
+const Dropdown = <T extends BaseOption>({ title, error, options, onChange }: Props<T>) => {
   const [pickedItem, setPickedItem] = useState<T | null>(null);
 
   const handleChange = (option: T) => {
@@ -76,7 +75,7 @@ const Dropdown = <T extends BaseOption>({ label, title, error, options, optionCo
         </Flex>}
       </MenuButton>
       <MenuList p={0} w={'100%'}  >
-        {options.map(option => <MenuItem key={option.data.name} onClick={(e) => handleChange(option)} p={5}>
+        {options.map(option => <MenuItem key={option.data.name} onClick={() => handleChange(option)} p={5}>
           <OptionItem option={option} />
         </MenuItem>)}
       </MenuList>

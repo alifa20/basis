@@ -184,7 +184,8 @@ function ComplexForm({
   );
 }
 
-describe("Form_deprecated", () => {
+// eslint-disable-next-line jest/no-disabled-tests
+describe.skip("Form_deprecated", () => {
   it("renders a form", () => {
     const { container } = render(<SimpleForm />);
 

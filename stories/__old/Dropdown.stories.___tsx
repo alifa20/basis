@@ -1,0 +1,82 @@
+import { Container, GridItem, SimpleGrid, VStack } from '@chakra-ui/layout';
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
+import { Dropdown } from '../../src/components';
+import { BaseOption, Props } from '../../src/components/Dropdown/Dropdown';
+
+const meta: Meta = {
+  title: '___zdeprecated/Dropdown',
+  component: Dropdown,
+  argTypes: {
+    children: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
+  parameters: {
+    controls: { expanded: true },
+  },
+};
+
+export default meta;
+const accountOptions = [
+  {
+    data: {
+      name: "28 Degrees Platinum Mastercard",
+      description: "Shop with less obstacles.",
+    },
+    value: "28-degrees-platinum-mastercard",
+  },
+  {
+    data: {
+      name: "Latitude Mastercard",
+      description:
+        "Choose what you want, when you want it.",
+    },
+    value: "latitude-mastercard",
+  },
+  {
+    data: {
+      name: "Gem Visa",
+      description: "6 months interest free shopping.",
+    },
+    value: "gem-visa",
+  },
+  {
+    data: {
+      name: "GO Mastercard",
+      description:
+        "Flexible repayment options to suit your budget.",
+    },
+    value: "go-mastercard",
+  },
+]
+
+
+const Template: Story<Props<BaseOption>> = (args) => (
+  <Container>
+    <VStack w="full" h="full" spacing={8} alignItems="flex-start" >
+      <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
+        <GridItem colSpan={1}>
+          <Dropdown options={accountOptions}
+            name="account"
+            label="Select Account"
+          />
+        </GridItem>
+      </SimpleGrid>
+    </VStack>
+  </Container>
+);
+
+// By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
+// https://storybook.js.org/docs/react/workflows/unit-testing
+export const Default = Template.bind({});
+
+Default.args = {};
+
+export const WithError = Template.bind({});
+
+WithError.args = {
+  error: 'Required',
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import  { Props } from '../../src/components/Input';
+import  { Props } from '../../src/components/Input/Input';
 import {Button,Input} from '../../src/components';
 import { VStack } from '@chakra-ui/layout';
 

@@ -3,7 +3,7 @@ import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent,
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import { Button, Input } from '../../src/components';
-import { Props } from '../../src/components/Input';
+import { Props } from '../../src/components/Input/Input';
 
 const meta: Meta = {
   title: '___zdeprecated/Input',

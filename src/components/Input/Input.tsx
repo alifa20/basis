@@ -6,7 +6,7 @@ import {
   InputProps,
 } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
-import FieldItem from './FieldItem';
+import FieldItem from '../FieldItem';
 
 // export interface Props
 //   extends Omit<InputProps, 'errorBorderColor' | 'isInvalid'> {

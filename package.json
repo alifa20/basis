@@ -82,6 +82,8 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "downshift": "^6.1.7",
-    "framer-motion": "^4"
+    "framer-motion": "^4",
+    "mem": "6.1.1",
+    "polished": "3.7.1"
   }
 }

@@ -25,7 +25,7 @@ function getTextStyleCSS(
     return null;
   }
 
-  const boldCSS = theme.textStyles[`${textStyle}.bold` as const];
+  const boldCSS = theme.textStyles[`${textStyle}.bold`];
 
   return {
     ...theme.textStyles[textStyle],

@@ -1,5 +1,5 @@
 // Providers
-export { default as BasisProvider } from "./providers/BasisProvider";
+export { default as BasisProvider } from "../providers/BasisProvider";
 
 // Themes
 export { default as defaultTheme } from "./themes/default";

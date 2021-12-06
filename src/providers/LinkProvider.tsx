@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// @ts-ignore
 export const LinkContext = React.createContext();
 
 // See: https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links

@@ -234,12 +234,12 @@ const getTextStyle = ({
     case "self-bold": {
       return {
         ...theme.textStyles[name],
-        ...theme.textStyles[`${name}.bold` as const],
+        ...theme.textStyles[`${name}.bold`],
       };
     }
 
     case "container": {
-      const boldCSS = theme.textStyles[`${name}.bold` as const];
+      const boldCSS = theme.textStyles[`${name}.bold`];
 
       return {
         ...theme.textStyles[name],

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// @ts-ignore
 export const WindowContext = React.createContext();
 
 function WindowProvider({ window, children }) {

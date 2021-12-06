@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
-import useTheme from "../hooks/useTheme";
-import useWindow from "../hooks/useWindow";
-import { BreakpointContext } from "../hooks/useBreakpoint";
+import useTheme from "../oldBasis/hooks/useTheme";
+import useWindow from "../oldBasis/hooks/useWindow";
+import { BreakpointContext } from "../oldBasis/hooks/useBreakpoint";
 
 function BreakpointProvider(props) {
   const { children } = props;
@@ -24,10 +24,11 @@ function BreakpointProvider(props) {
       );
 
       if (mediaQueryListMap[bp].matches) {
+        // @ts-ignore
         setBreakpoint(bp);
       }
     }
-
+    // @ts-ignore
     setMediaQueryListMap(mediaQueryListMap);
   }, [windowObj, theme.exclusiveMediaQueries]);
 
@@ -35,18 +36,24 @@ function BreakpointProvider(props) {
     let mounted = true;
     const removeListeners = [];
 
+    // @ts-ignore
     for (const bp in mediaQueryListMap) {
+      // @ts-ignore
       const mediaQueryList = mediaQueryListMap[bp];
       // eslint-disable-next-line no-loop-func
       const listener = (event) => {
         if (event.matches && mounted) {
+          // @ts-ignore
           setBreakpoint(bp);
         }
       };
 
+      // @ts-ignore
       mediaQueryList.addListener(listener);
 
+      // @ts-ignore
       removeListeners.push(() => {
+        // @ts-ignore
         mediaQueryList.removeListener(listener);
       });
     }
@@ -55,6 +62,7 @@ function BreakpointProvider(props) {
       mounted = false;
 
       removeListeners.forEach((fn) => {
+        // @ts-ignore
         fn();
       });
     };

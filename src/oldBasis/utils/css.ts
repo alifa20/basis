@@ -190,6 +190,7 @@ function sortMediaQueries(css: CSSObject) {
     if (match) {
       const minWidth = parseInt(match[1], 10);
 
+      // @ts-ignore
       minWidths.push(minWidth);
     } else {
       result[key] = css[key];
@@ -213,7 +214,7 @@ export function mergeResponsiveCSS(css1: CSSObject, css2: CSSObject) {
   for (const key in css1) {
     const value = css1[key];
     if (typeof value === "object") {
-      result[key] = { ...value };
+      result[key] = value;
     } else {
       result[key] = css1[key];
     }
@@ -226,6 +227,7 @@ export function mergeResponsiveCSS(css1: CSSObject, css2: CSSObject) {
         // merge with css1
         result[key] = {
           ...result[key],
+          // @ts-ignore
           ...value,
         };
       } else {

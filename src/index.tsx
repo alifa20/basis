@@ -11,4 +11,4 @@ export * from './providers';
 
 export { default as layout } from './layout'
 
-export { folder } from './folder'
+export * as folder from './folder'

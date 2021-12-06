@@ -1,7 +1,7 @@
-import { extendTheme, withDefaultVariant } from '@chakra-ui/react';
-import { colors } from './colors';
-import { components } from './components';
-import { fonts } from './fonts';
+import { extendTheme, withDefaultVariant } from "@chakra-ui/react";
+import { colors } from "./colors";
+import { components } from "./components";
+import { fonts } from "./fonts";
 
 const theme = extendTheme(
   {
@@ -10,8 +10,8 @@ const theme = extendTheme(
     components,
   },
   withDefaultVariant({
-    variant: 'filled',
-    components: ['Input', 'Select'],
+    variant: "filled",
+    components: ["Input", "Select"],
   })
 );
 

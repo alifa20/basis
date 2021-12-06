@@ -1,1 +1,1 @@
-export * as folder from "./folder";
+export { Hey } from "./folder";
